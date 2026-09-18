@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { Analytics } from "./Analytics";
 
 // Ništa od ovoga ne renderira SSR sadržaj → učitava se tek nakon hidratacije (manje JS-a na kritičnom putu).
 const CookieBanner = dynamic(() => import("./CookieBanner").then((m) => m.CookieBanner), { ssr: false });
@@ -11,6 +12,7 @@ export function ClientExtras() {
     <>
       <CookieBanner />
       <AssistantWidget />
+      <Analytics />
     </>
   );
 }

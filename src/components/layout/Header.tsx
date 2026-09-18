@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { m, useMotionValueEvent, useScroll } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
@@ -40,7 +40,7 @@ export function Header() {
       >
         {ui.skipToContent}
       </a>
-      <motion.header
+      <m.header
         initial={false}
         animate={{ y: hidden && !menuOpen ? "-100%" : "0%" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -118,7 +118,7 @@ export function Header() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </m.header>
       <MobileMenu />
     </>
   );

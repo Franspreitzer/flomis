@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ui } from "@/content";
 import { TransitionLink } from "@/components/ui/TransitionLink";
@@ -41,7 +41,7 @@ export function CookieBanner() {
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           key="cookie"
           role="dialog"
           aria-labelledby="cookie-title"
@@ -77,7 +77,7 @@ export function CookieBanner() {
               {ui.cookie.essentialOnly}
             </button>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

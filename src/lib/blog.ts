@@ -59,6 +59,22 @@ function toIso(d: unknown) {
   return Number.isNaN(date.getTime()) ? new Date().toISOString().slice(0, 10) : date.toISOString().slice(0, 10);
 }
 
+/** ID za sidro iz naslova (## Naslov → "naslov"). */
+export function slugifyHeading(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[čć]/g, "c").replace(/[š]/g, "s").replace(/[ž]/g, "z").replace(/[đ]/g, "d")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .slice(0, 60);
+}
+
+/** Sadržaj (TOC) iz H2 naslova markdowna. */
+export function extractToc(md: string) {
+  return [...md.matchAll(/^## (.+)$/gm)].map((m) => ({ text: m[1].trim(), id: slugifyHeading(m[1]) }));
+}
+
 export function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("hr-HR", { day: "numeric", month: "long", year: "numeric" });
 }

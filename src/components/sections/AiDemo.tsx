@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Parens } from "@/components/brand/Parens";
 import { Button } from "@/components/ui/Button";
@@ -131,20 +131,20 @@ export function AiDemo() {
             {/* Poruke */}
             <div ref={listRef} className="flex h-[360px] flex-col gap-3 overflow-y-auto px-5 py-5" data-lenis-prevent aria-live="polite">
               <AnimatePresence initial={false}>
-                {messages.map((m) => (
-                  <motion.div
-                    key={m.id}
+                {messages.map((msg) => (
+                  <m.div
+                    key={msg.id}
                     initial={{ opacity: 0, y: 12, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.5, ease: EASE }}
-                    className={cn("max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed", m.role === "user" ? "self-end rounded-br-sm bg-paper text-ink" : "self-start rounded-bl-sm bg-ink-4 text-paper")}
+                    className={cn("max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed", msg.role === "user" ? "self-end rounded-br-sm bg-paper text-ink" : "self-start rounded-bl-sm bg-ink-4 text-paper")}
                   >
-                    {m.text}
-                    {m.role === "bot" && !m.done && <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-accent motion-safe:animate-blink" />}
-                  </motion.div>
+                    {msg.text}
+                    {msg.role === "bot" && !msg.done && <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-accent motion-safe:animate-blink" />}
+                  </m.div>
                 ))}
                 {typing && (
-                  <motion.div
+                  <m.div
                     key="typing"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -155,7 +155,7 @@ export function AiDemo() {
                     {[0, 1, 2].map((i) => (
                       <span key={i} className="h-1.5 w-1.5 rounded-full bg-paper-2 motion-safe:animate-bounce" style={{ animationDelay: `${i * 120}ms` }} />
                     ))}
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>

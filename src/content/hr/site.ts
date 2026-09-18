@@ -21,6 +21,11 @@ export const site = {
       country: "Hrvatska",
       countryCode: "HR",
     },
+    whatsapp: "https://wa.me/385976425423?text=Bok%2C%20zanima%20me%20ponuda%20za%20web%20stranicu.",
+    whatsappLabel: "Piši nam na WhatsApp",
+    /** Link "Ostavi recenziju" iz Google Business Profila (Profil → Zatraži recenzije). Prazno = gumb se ne prikazuje. */
+    googleReviewUrl: "",
+    googleReviewLabel: "Ostavi recenziju na Googleu",
     hours: "Pon – Pet, 9:00 – 17:00",
     responseTime: "Odgovaramo u roku 24 sata",
   },
@@ -126,6 +131,7 @@ export const blogUi = {
   latest: "Najnovije s bloga",
   more: "Pročitaj",
   share: "Podijeli",
+  toc: "Sadržaj",
   related: "Slični članci",
   crumbs: { home: "Početna", blog: "Blog" },
   cta: {

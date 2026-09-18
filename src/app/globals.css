@@ -300,3 +300,4 @@
 }
 .prose img { border-radius: var(--radius-md); margin: 1.5em 0; }
 .prose .not-prose { color: inherit; }
+.prose h2 { scroll-margin-top: 6rem; }

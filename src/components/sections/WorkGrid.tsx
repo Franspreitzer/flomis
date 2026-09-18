@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { WorkCard } from "@/components/sections/WorkCard";
 import { type Project } from "@/content";
@@ -40,10 +40,10 @@ export function WorkGrid({ projects, filters }: Props) {
         })}
       </div>
 
-      <motion.ul layout className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      <m.ul layout className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout" initial={false}>
           {list.map((p, i) => (
-            <motion.li
+            <m.li
               key={p.slug}
               layout={!reduced}
               initial={reduced ? false : { opacity: 0, y: 30 }}
@@ -52,10 +52,10 @@ export function WorkGrid({ projects, filters }: Props) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <WorkCard project={p} aspect="aspect-[4/3]" priority={i < 3} />
-            </motion.li>
+            </m.li>
           ))}
         </AnimatePresence>
-      </motion.ul>
+      </m.ul>
     </div>
   );
 }

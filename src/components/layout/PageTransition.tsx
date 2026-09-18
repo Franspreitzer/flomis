@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
@@ -75,7 +75,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
       {children}
       <AnimatePresence>
         {visible && (
-          <motion.div
+          <m.div
             key="curtain"
             className="fixed inset-0 z-[200] flex items-center justify-center bg-ink text-paper"
             initial={{ y: "100%" }}
@@ -83,14 +83,14 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
             exit={{ y: "-100%", transition: { duration: 0.7, ease: EASE } }}
             aria-hidden="true"
           >
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
             >
               <Parens className="h-16 w-auto text-accent" gap={6} />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
       <UncoverGate phase={phase} onDone={() => setPhase("idle")} />

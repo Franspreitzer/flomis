@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/sections/PageHero";
 import { Accordion } from "@/components/ui/Accordion";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -38,6 +39,11 @@ export default function ContactPage() {
                   {site.contact.phone}
                 </a>
               </dd>
+            </div>
+            <div>
+              <Button href={site.contact.whatsapp} external variant="secondary" size="sm">
+                {site.contact.whatsappLabel}
+              </Button>
             </div>
             <div>
               <dt className="text-label mb-2 text-paper-3">{contact.info.addressLabel}</dt>

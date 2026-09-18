@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useId, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +54,7 @@ export function Accordion({ items, className, defaultOpen = 0 }: Props) {
             </h3>
             <AnimatePresence initial={false}>
               {isOpen && (
-                <motion.div
+                <m.div
                   id={panel}
                   role="region"
                   aria-labelledby={btn}
@@ -68,7 +68,7 @@ export function Accordion({ items, className, defaultOpen = 0 }: Props) {
                   <p className="max-w-2xl pb-8 text-base leading-relaxed text-paper-2 md:pl-[4.6rem] md:text-lg">
                     {it.a}
                   </p>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>

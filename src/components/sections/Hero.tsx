@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useAppState } from "@/components/layout/AppState";
 import { Parens } from "@/components/brand/Parens";
@@ -39,9 +39,9 @@ export function Hero() {
       )}
 
       <div className="container-x relative z-10 pb-10 md:pb-14">
-        <motion.p {...fade(0.05)} className="text-label mb-6 flex items-center gap-3 text-paper-2">
+        <m.p {...fade(0.05)} className="text-label mb-6 flex items-center gap-3 text-paper-2">
           <span className="text-metal-2">( )</span> {h.eyebrow}
-        </motion.p>
+        </m.p>
 
         <SplitText
           as="h1"
@@ -54,20 +54,20 @@ export function Hero() {
         />
 
         <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-12 md:items-end">
-          <motion.p {...fade(0.55)} className="text-lead max-w-xl md:col-span-6">
+          <m.p {...fade(0.55)} className="text-lead max-w-xl md:col-span-6">
             {h.lead}
-          </motion.p>
-          <motion.div {...fade(0.7)} className="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
+          </m.p>
+          <m.div {...fade(0.7)} className="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
             <Button href={h.ctaPrimary.href} size="lg">
               {h.ctaPrimary.label}
             </Button>
             <Button href={h.ctaSecondary.href} size="lg" variant="secondary">
               {h.ctaSecondary.label}
             </Button>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           {...fade(0.9)}
           className="mt-12 flex flex-wrap items-end justify-between gap-6 border-t border-line pt-6 md:mt-16"
         >
@@ -85,7 +85,7 @@ export function Hero() {
               <span className="absolute inset-x-0 top-0 h-1/2 bg-accent motion-safe:animate-[scrollhint_1.8s_ease-in-out_infinite]" />
             </span>
           </p>
-        </motion.div>
+        </m.div>
       </div>
       <style>{`@keyframes scrollhint{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}`}</style>
     </section>

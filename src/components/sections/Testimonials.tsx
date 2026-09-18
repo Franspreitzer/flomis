@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
-import { home, ui } from "@/content";
+import { home, site, ui } from "@/content";
 import { cn } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -33,11 +33,23 @@ export function Testimonials() {
 
   return (
     <section className="container-x section-y overflow-hidden">
-      <div className="mb-12 md:mb-16">
-        <SectionLabel num="06" className="mb-5">
-          {t.label}
-        </SectionLabel>
-        <SplitText as="h2" text={t.title} className="text-display-lg" />
+      <div className="mb-12 flex flex-wrap items-end justify-between gap-6 md:mb-16">
+        <div>
+          <SectionLabel num="06" className="mb-5">
+            {t.label}
+          </SectionLabel>
+          <SplitText as="h2" text={t.title} className="text-display-lg" />
+        </div>
+        {site.contact.googleReviewUrl && (
+          <a
+            href={site.contact.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-line-strong px-5 py-2.5 text-sm font-semibold transition-colors hover:border-paper"
+          >
+            {site.contact.googleReviewLabel} →
+          </a>
+        )}
       </div>
 
       <Reveal>
@@ -53,7 +65,7 @@ export function Testimonials() {
           </div>
           <div className="relative min-h-[260px] md:col-span-9 md:min-h-[300px]" data-cursor="drag">
             <AnimatePresence mode="wait" custom={dir} initial={false}>
-              <motion.figure
+              <m.figure
                 key={index}
                 custom={dir}
                 initial={reduced ? { opacity: 0 } : { opacity: 0, x: dir * 60 }}
@@ -75,7 +87,7 @@ export function Testimonials() {
                   <span className="text-paper-2">{cur.role}</span>
                   {cur.tag && <span className="text-label text-paper-3">{cur.tag}</span>}
                 </figcaption>
-              </motion.figure>
+              </m.figure>
             </AnimatePresence>
           </div>
 

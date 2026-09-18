@@ -10,7 +10,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
 import { TransitionLink } from "@/components/ui/TransitionLink";
 import { blogUi, site } from "@/content";
-import { formatDate, getPost, getPosts } from "@/lib/blog";
+import { extractToc, formatDate, getPost, getPosts, slugifyHeading } from "@/lib/blog";
+import { ShareLinks } from "@/components/ui/ShareLinks";
 import { blogPostingJsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -35,6 +36,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   });
 }
 
+/** H2 s ID-em za sadržaj (TOC). */
+function H2({ children }: { children?: React.ReactNode }) {
+  const text = typeof children === "string" ? children : Array.isArray(children) ? children.map(String).join("") : "";
+  return <h2 id={slugifyHeading(text)}>{children}</h2>;
+}
+
 /** Interni linkovi idu kroz TransitionLink, vanjski se otvaraju u novom tabu. */
 function MdLink({ href, children }: { href?: string; children?: React.ReactNode }) {
   if (href?.startsWith("/")) return <TransitionLink href={href}>{children}</TransitionLink>;
@@ -49,6 +56,8 @@ export default async function PostPage({ params }: Params) {
   const { slug } = await params;
   const p = getPost(slug);
   if (!p) notFound();
+  const toc = extractToc(p.content);
+  const url = `${site.url}/blog/${p.slug}`;
   const related = getPosts()
     .filter((x) => x.slug !== p.slug)
     .sort((a, b) => (a.category === p.category ? -1 : 0) - (b.category === p.category ? -1 : 0))
@@ -100,12 +109,29 @@ export default async function PostPage({ params }: Params) {
         <div className="container-x grid gap-12 pb-[var(--section-y)] lg:grid-cols-12">
           <Reveal className="prose lg:col-span-8" y={24}>
             <p className="text-lead not-prose mb-10 border-l-2 border-line-strong pl-6">{p.description}</p>
-            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ a: MdLink }}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ a: MdLink, h2: H2 }}>
               {p.content}
             </ReactMarkdown>
+            <div className="not-prose mt-12 border-t border-line pt-6">
+              <ShareLinks url={url} title={p.title} label={blogUi.share} />
+            </div>
           </Reveal>
           <aside className="lg:col-span-3 lg:col-start-10">
             <div className="lg:sticky lg:top-32">
+              {toc.length > 2 && (
+                <nav aria-label="Sadržaj" className="mb-6 hidden lg:block">
+                  <p className="text-label mb-3 text-paper-3">{blogUi.toc}</p>
+                  <ol className="space-y-1.5 border-l border-line pl-4 text-sm">
+                    {toc.map((h) => (
+                      <li key={h.id}>
+                        <a href={`#${h.id}`} className="text-paper-2 transition-colors hover:text-paper">
+                          {h.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
               <Reveal className="rounded-lg border border-line bg-ink-2/70 p-6">
                 <SectionLabel className="mb-3">Flomis · Osijek</SectionLabel>
                 <p className="font-display text-xl font-bold tracking-tight">{blogUi.cta.title}</p>

@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Parens } from "@/components/brand/Parens";
 import { TransitionLink } from "@/components/ui/TransitionLink";
-import { home } from "@/content";
+import { home, site } from "@/content";
 import { useAppState } from "./AppState";
 import { cn, prefersReducedMotion } from "@/lib/utils";
 
@@ -134,7 +134,7 @@ export function AssistantWidget() {
       {/* Panel */}
       <AnimatePresence>
         {open && (
-          <motion.section
+          <m.section
             key="panel"
             role="dialog"
             aria-label={c.title}
@@ -168,30 +168,40 @@ export function AssistantWidget() {
             </header>
 
             <div ref={listRef} className="flex h-[min(52vh,380px)] flex-col gap-2.5 overflow-y-auto px-4 py-4" aria-live="polite">
-              {messages.map((m) => (
-                <motion.div
-                  key={m.id}
+              {messages.map((msg) => (
+                <m.div
+                  key={msg.id}
                   initial={reduced ? false : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: EASE }}
                   className={cn(
                     "max-w-[88%] rounded-2xl px-3.5 py-2.5 text-[0.85rem] leading-relaxed",
-                    m.role === "user" ? "self-end rounded-br-sm bg-paper text-ink" : "self-start rounded-bl-sm bg-ink-4 text-paper",
+                    msg.role === "user" ? "self-end rounded-br-sm bg-paper text-ink" : "self-start rounded-bl-sm bg-ink-4 text-paper",
                   )}
                 >
-                  {m.text}
-                  {m.role === "bot" && !m.done && (
+                  {msg.text}
+                  {msg.role === "bot" && !msg.done && (
                     <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-accent motion-safe:animate-blink" />
                   )}
-                  {m.cta && m.done && (
-                    <TransitionLink
-                      href={c.fallbackCta.href}
-                      className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-ink"
-                    >
-                      {c.fallbackCta.label} →
-                    </TransitionLink>
+                  {msg.cta && msg.done && (
+                    <span className="mt-2 flex flex-wrap gap-2">
+                      <TransitionLink
+                        href={c.fallbackCta.href}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-ink"
+                      >
+                        {c.fallbackCta.label} →
+                      </TransitionLink>
+                      <a
+                        href={site.contact.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-xs font-semibold text-paper"
+                      >
+                        WhatsApp
+                      </a>
+                    </span>
                   )}
-                </motion.div>
+                </m.div>
               ))}
               {typing && (
                 <div className="flex gap-1 self-start rounded-2xl rounded-bl-sm bg-ink-4 px-3.5 py-3" aria-label={home.ai.demo.typingLabel}>
@@ -238,14 +248,14 @@ export function AssistantWidget() {
                 </svg>
               </button>
             </form>
-          </motion.section>
+          </m.section>
         )}
       </AnimatePresence>
 
       {/* Hint balončić */}
       <AnimatePresence>
         {hint && !open && (
-          <motion.button
+          <m.button
             key="hint"
             onClick={() => toggle(true)}
             initial={{ opacity: 0, y: 8, scale: 0.95 }}
@@ -256,7 +266,7 @@ export function AssistantWidget() {
             className="hidden rounded-2xl rounded-br-sm border border-line bg-ink-2/95 px-4 py-2.5 text-sm text-paper shadow-lg backdrop-blur-md md:block"
           >
             {c.bubble}
-          </motion.button>
+          </m.button>
         )}
       </AnimatePresence>
 

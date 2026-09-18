@@ -12,7 +12,7 @@ type Props = {
 /** Beskonačna traka — čisti CSS transform, pauza na hover. */
 export function Marquee({ items, className, reverse, duration = 40, separator }: Props) {
   const sep = separator ?? (
-    <span className="mx-6 font-mono text-[0.5em] text-metal md:mx-10" aria-hidden="true">
+    <span className="mx-6 font-mono text-[0.5em] text-paper-3 md:mx-10" aria-hidden="true">
       ( )
     </span>
   );

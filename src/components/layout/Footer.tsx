@@ -67,6 +67,11 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-paper">
+                    WhatsApp
+                  </a>
+                </li>
+                <li>
                   <address className="not-italic">
                     {a.street}
                     <br />

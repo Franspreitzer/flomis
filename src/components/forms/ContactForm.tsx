@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { TransitionLink } from "@/components/ui/TransitionLink";
@@ -54,7 +54,7 @@ export function ContactForm() {
     <div className="relative">
       <AnimatePresence mode="wait">
         {status === "ok" ? (
-          <motion.div
+          <m.div
             key="ok"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,9 +69,9 @@ export function ContactForm() {
                 ↻
               </Button>
             </div>
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.form
+          <m.form
             key="form"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -172,7 +172,7 @@ export function ContactForm() {
                 </p>
               )}
             </div>
-          </motion.form>
+          </m.form>
         )}
       </AnimatePresence>
     </div>

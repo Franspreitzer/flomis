@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
@@ -77,7 +77,7 @@ export function Preloader() {
       }}
     >
       {show && !done && (
-        <motion.div
+        <m.div
           key="preloader"
           className="fixed inset-0 z-[300] flex items-center justify-center bg-ink text-paper"
           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.87, 0, 0.13, 1] } }}
@@ -97,7 +97,7 @@ export function Preloader() {
             </span>
           </div>
           <div className="absolute inset-x-0 bottom-0 h-px bg-line">
-            <motion.div
+            <m.div
               className="h-full origin-left bg-accent"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1, transition: { duration: 1.1, ease: [0.65, 0, 0.35, 1] } }}
@@ -105,7 +105,7 @@ export function Preloader() {
           </div>
           <p className="text-label absolute bottom-6 left-[var(--gutter)] text-paper-3">Flomis</p>
           <p className="text-label absolute bottom-6 right-[var(--gutter)] text-paper-3">Osijek, HR</p>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

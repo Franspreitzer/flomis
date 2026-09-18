@@ -28,7 +28,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       root
       ref={ref}
       autoRaf={false}
-      options={{ lerp: 0.09, wheelMultiplier: 0.95, smoothWheel: true, respectReducedMotion: true }}
+      options={{ lerp: 0.09, wheelMultiplier: 0.95, smoothWheel: true, respectReducedMotion: true, anchors: { offset: -96 } }}
     >
       {children}
     </ReactLenis>

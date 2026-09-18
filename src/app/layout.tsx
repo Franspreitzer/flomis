@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { PageTransitionProvider } from "@/components/layout/PageTransition";
 import { Preloader } from "@/components/layout/Preloader";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { home, site } from "@/content";
 import { localBusinessJsonLd, webSiteJsonLd } from "@/lib/seo";
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-ink text-paper">
         <JsonLd data={[localBusinessJsonLd(), webSiteJsonLd()]} />
         <AppStateProvider>
+          <MotionProvider>
           <SmoothScroll>
             <PageTransitionProvider>
               <Preloader />
@@ -89,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ClientExtras />
             </PageTransitionProvider>
           </SmoothScroll>
+          </MotionProvider>
         </AppStateProvider>
       </body>
     </html>

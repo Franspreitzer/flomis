@@ -87,6 +87,36 @@ export async function POST(req: Request) {
     const resend = new Resend(key);
     const { error } = await resend.emails.send({ from, to, replyTo: d.email, subject, html, text });
     if (error) throw error;
+
+    // Automatska potvrda klijentu (ne ruši zahtjev ako ne uspije).
+    const firstName = d.name.split(" ")[0];
+    resend.emails
+      .send({
+        from,
+        to: d.email,
+        replyTo: to,
+        subject: "Primili smo tvoj upit — Flomis",
+        text: `Bok ${firstName},
+
+hvala na upitu! Pročitali smo ga i javljamo se u roku 24 sata radnim danom s pitanjima, idejom i okvirnom ponudom.
+
+Ako je hitno, nazovi ${site.contact.phone} ili piši na WhatsApp: ${site.contact.whatsapp}
+
+Tvoja poruka:
+${d.message}
+
+— Flomis, ${site.contact.address.street}, ${site.contact.address.zip} ${site.contact.address.city}
+${site.url}`,
+        html: `<div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;color:#101827;line-height:1.55">
+          <p>Bok ${esc(firstName)},</p>
+          <p>hvala na upitu! Pročitali smo ga i javljamo se <strong>u roku 24 sata</strong> radnim danom s pitanjima, idejom i okvirnom ponudom.</p>
+          <p>Ako je hitno: <a href="${site.contact.phoneHref}">${site.contact.phone}</a> ili <a href="${site.contact.whatsapp}">WhatsApp</a>.</p>
+          <p style="margin-top:20px;padding:14px;background:#f4f4f2;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(d.message)}</p>
+          <p style="color:#77818A;font-size:13px;margin-top:24px">— Flomis · ${site.contact.address.street}, ${site.contact.address.zip} ${site.contact.address.city} · <a href="${site.url}" style="color:#77818A">${site.url.replace(/^https?:\/\//, "")}</a></p>
+        </div>`,
+      })
+      .catch((e) => console.warn("[kontakt] auto-reply nije poslan", e));
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[kontakt] slanje nije uspjelo", err);

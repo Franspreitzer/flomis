@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { useEffect } from "react";
 import { TransitionLink } from "@/components/ui/TransitionLink";
@@ -28,7 +28,7 @@ export function MobileMenu() {
   return (
     <AnimatePresence>
       {menuOpen && (
-        <motion.div
+        <m.div
           id="mobilni-meni"
           key="menu"
           initial={{ clipPath: "inset(0 0 100% 0)" }}
@@ -43,7 +43,7 @@ export function MobileMenu() {
               <ul className="space-y-1">
                 {nav.main.map((item, i) => (
                   <li key={item.href} className="overflow-hidden">
-                    <motion.div
+                    <m.div
                       initial={{ y: "110%" }}
                       animate={{ y: 0, transition: { delay: 0.15 + i * 0.06, duration: 0.8, ease: EASE } }}
                       exit={{ y: "110%", transition: { duration: 0.3 } }}
@@ -58,12 +58,12 @@ export function MobileMenu() {
                         </span>
                         <span className="transition-colors duration-300 group-hover:text-paper">{item.label}</span>
                       </TransitionLink>
-                    </motion.div>
+                    </m.div>
                   </li>
                 ))}
               </ul>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.7, ease: EASE } }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -79,10 +79,10 @@ export function MobileMenu() {
                     {s.label}
                   </TransitionLink>
                 ))}
-              </motion.div>
+              </m.div>
             </nav>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.6, duration: 0.6 } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -103,9 +103,9 @@ export function MobileMenu() {
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
