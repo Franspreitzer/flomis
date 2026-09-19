@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Flomis — web stranica
 
 Premium višestranična web stranica digitalne agencije **FLOMIS j.d.o.o.** (Osijek).
@@ -120,3 +121,8 @@ src/
 - 3D scena i custom kursor su isključeni na mobitelu / uređajima bez miša; 3D se učitava dinamički i pauzira izvan viewporta.
 - Slike preko `next/image` (AVIF/WebP, lazy), metadata + Open Graph za svaku stranicu, `sitemap.xml`, `robots.txt`, schema.org (`LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList`).
 - Semantički HTML, skip-link, fokus stilovi, ARIA na meniju, harmonici, slideru i chat widgetu.
+=======
+# flomis
+
+Flomis sluzbena webs tranica
+>>>>>>> 7c03129dfde710b53997c07fb4b2339325d703b0
