@@ -2,12 +2,12 @@ export const about = {
   meta: {
     title: "O nama — digitalna agencija Flomis, Osijek",
     description:
-      "Flomis je digitalna agencija iz Osijeka. Mali tim, veliki standardi: web stranice, web shopovi i AI asistenti koji donose rezultate malim i srednjim firmama.",
+      "Flomis je digitalna agencija osnovana 2026. u Osijeku. Misija: web stranice, web shopovi i AI asistenti koji firmama iz Slavonije donose upite i prodaju — na razini najboljih, po lokalnim cijenama.",
   },
   label: "O nama",
-  title: ["Mali tim.", "Veliki standardi."],
+  title: ["Iz Osijeka.", "Bez izgovora."],
   lead:
-    "Flomis je digitalna agencija iz Osijeka. Radimo s firmama koje žele web koji donosi posao, a ne samo lijepu sliku. Bez korporativnog praznog govora, bez šablona, bez izgovora.",
+    "Flomis je digitalna agencija osnovana 2026. u Osijeku s jednim ciljem: da firme iz Slavonije imaju web koji donosi posao — ne lijepu sliku koja skuplja prašinu. Bez korporativnog praznog govora, bez šablona, bez agencijskih cjenika iz Zagreba.",
   manifesto: {
     label: "Kako radimo",
     items: [
@@ -47,26 +47,42 @@ export const about = {
       { value: "100%", label: "projekata po mjeri" },
     ],
   },
-  team: {
-    label: "Tim",
-    title: "Ljudi iza zagrada.",
-    text: "Mali tim znači da radiš s ljudima koji stvarno rade na tvom projektu — ne s prodajnim predstavnikom.",
-    members: [
+  mission: {
+    label: "Misija",
+    title: ["Slavonija zaslužuje", "web kakav ima Zagreb."],
+    statement:
+      "Godinama smo gledali kako firme iz Osijeka, Đakova ili Vinkovaca plaćaju agencije iz Zagreba ili se zadovoljavaju stranicom od rođaka. Ni jedno ni drugo nije rješenje. Zato smo 2026. osnovali Flomis — agenciju koja radi na razini najboljih, a sjedi u Dunavskoj ulici.",
+    goals: [
       {
-        name: "[Ime Prezime]",
-        role: "[Osnivač · Razvoj]",
-        bio: "[PRIMJER] Kratki opis: iskustvo, čime se bavi u projektima, što voli raditi.",
+        num: "01",
+        title: "Nula šablona",
+        text: "Svaka stranica koju napravimo je nacrtana od nule za tu firmu. Ako izgleda kao nešto što si već vidio — nismo završili.",
       },
       {
-        name: "[Ime Prezime]",
-        role: "[Dizajn · UX]",
-        bio: "[PRIMJER] Kratki opis: iskustvo, čime se bavi u projektima, što voli raditi.",
+        num: "02",
+        title: "Rezultat se mjeri u upitima",
+        text: "Ne u lajkovima, ne u posjetama. Stranica radi kad telefon zvoni. To je jedini KPI koji nas zanima.",
       },
       {
-        name: "[Ime Prezime]",
-        role: "[AI · Automatizacija]",
-        bio: "[PRIMJER] Kratki opis: iskustvo, čime se bavi u projektima, što voli raditi.",
+        num: "03",
+        title: "AI za male firme, ne samo za velike",
+        text: "Asistent koji odgovara kupcima 24/7 ne smije biti privilegija korporacija. Radimo ga dostupnim obrtu s troje zaposlenih.",
       },
+      {
+        num: "04",
+        title: "Klijent je vlasnik svega",
+        text: "Domena, stranica, podaci — na tvoje ime. Ostaješ jer ti se isplati, ne jer ne možeš otići.",
+      },
+    ],
+  },
+  timeline: {
+    label: "Put",
+    title: "Gdje smo i kamo idemo.",
+    items: [
+      { when: "Rujan 2026.", title: "Osnovan Flomis j.d.o.o.", text: "Sjedište u Osijeku, Dunavska 36. Prvi projekti: web stranice i AI asistenti za firme iz Slavonije.", done: true },
+      { when: "2026.", title: "Prvih 10 firmi online", text: "Cilj za prvu godinu: deset firmi iz Osječko-baranjske županije koje preko stranice dobivaju stvarne upite.", done: false },
+      { when: "2027.", title: "AI asistent kao standard", text: "Svaka naša stranica dolazi s asistentom koji zna firmu, odgovara kupcima i zakazuje termine — bez doplate.", done: false },
+      { when: "2028.", title: "Najbolja web agencija u Slavoniji", text: "Ne najveća. Najbolja — po rezultatima klijenata i po tome koliko nas preporučuju.", done: false },
     ],
   },
   stack: {
@@ -90,8 +106,8 @@ export const about = {
     ],
   },
   cta: {
-    title: "Želiš raditi s nama?",
-    text: "Bilo da si klijent ili developer koji traži ekipu — javi se.",
+    title: "Budi jedna od prvih deset.",
+    text: "Firme koje s nama krenu ove godine dobivaju najviše pažnje koju ćemo ikad moći dati. Javi se.",
     button: { label: "Javi nam se", href: "/kontakt" },
   },
 } as const;

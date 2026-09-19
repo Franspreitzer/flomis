@@ -7,7 +7,6 @@ import { Marquee } from "@/components/ui/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
-import { TiltCard } from "@/components/ui/TiltCard";
 import { about, site } from "@/content";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
@@ -71,34 +70,51 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      {/* Tim */}
-      <section className="container-x pb-[var(--section-y)]">
-        <div className="mb-10 grid gap-4 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-8">
-            <SectionLabel num="03" className="mb-5">
-              {about.team.label}
-            </SectionLabel>
-            <SplitText as="h2" text={about.team.title} className="text-display-md" />
-          </div>
-          <Reveal className="md:col-span-4 md:justify-self-end">
-            <p className="max-w-sm text-base text-paper-2 md:text-lg">{about.team.text}</p>
+      {/* Misija */}
+      <section className="theme-light section-y">
+        <div className="container-x">
+          <SectionLabel num="03" className="mb-5">
+            {about.mission.label}
+          </SectionLabel>
+          <SplitText as="h2" text={about.mission.title} className="text-display-lg" />
+          <Reveal className="mt-8 max-w-3xl">
+            <p className="text-lead text-ink">{about.mission.statement}</p>
+          </Reveal>
+          <Reveal stagger="[data-reveal-item]" className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
+            {about.mission.goals.map((g) => (
+              <div key={g.num} data-reveal-item className="bg-paper p-7 md:min-h-[260px]">
+                <span className="text-label text-paper-3">( {g.num} )</span>
+                <h3 className="mt-8 font-display text-xl font-bold tracking-tight">{g.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-paper-2">{g.text}</p>
+              </div>
+            ))}
           </Reveal>
         </div>
-        <Reveal stagger="[data-reveal-item]" className="grid gap-4 md:grid-cols-3">
-          {about.team.members.map((m, i) => (
-            <div key={i} data-reveal-item>
-              <TiltCard className="rounded-lg" max={4}>
-                <article className="rounded-lg border border-line bg-ink-2/70 p-6">
-                  <div className="relative mb-6 flex aspect-[4/5] items-center justify-center overflow-hidden rounded-md bg-gradient-to-br from-ink-3 to-ink">
-                    <Parens className="w-1/3 text-metal/60" gap={3} />
-                    <span className="text-label absolute bottom-4 left-4 text-paper-3">[FOTO]</span>
-                  </div>
-                  <h3 className="font-display text-xl font-bold tracking-tight">{m.name}</h3>
-                  <p className="text-label mt-1 text-paper-3">{m.role}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-paper-2">{m.bio}</p>
-                </article>
-              </TiltCard>
-            </div>
+      </section>
+
+      {/* Put / ciljevi */}
+      <section className="container-x section-y">
+        <div className="mb-10 grid gap-4 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <SectionLabel num="04" className="mb-5">
+              {about.timeline.label}
+            </SectionLabel>
+            <SplitText as="h2" text={about.timeline.title} className="text-display-md" />
+          </div>
+        </div>
+        <Reveal as="ol" stagger="[data-reveal-item]" className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {about.timeline.items.map((t, i) => (
+            <li key={i} data-reveal-item className="relative rounded-lg border border-line bg-ink-2/60 p-6">
+              <div className="mb-8 flex items-center justify-between">
+                <span className="text-label text-paper-3">{t.when}</span>
+                <span
+                  className={t.done ? "h-2.5 w-2.5 rounded-full bg-accent" : "h-2.5 w-2.5 rounded-full border border-line-strong"}
+                  aria-label={t.done ? "Ostvareno" : "Cilj"}
+                />
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight">{t.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-paper-2">{t.text}</p>
+            </li>
           ))}
         </Reveal>
       </section>
