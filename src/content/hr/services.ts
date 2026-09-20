@@ -126,7 +126,7 @@ export const services: Service[] = [
     title: "Web shopovi",
     short: "Online trgovine koje prodaju dok spavaš.",
     card: "Web shop s brzim checkoutom, hrvatskim načinima plaćanja i dostave, te sustavom koji možeš sam voditi.",
-    tags: ["Shopify", "WooCommerce", "Plaćanje", "Dostava"],
+    tags: ["Shopify", "Po mjeri", "Plaćanje", "Dostava"],
     meta: {
       title: "Izrada web shopa — online trgovina koja prodaje | Flomis Osijek",
       description:

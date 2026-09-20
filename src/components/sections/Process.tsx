@@ -65,7 +65,7 @@ export function Process() {
 
   return (
     <section className="relative">
-      <div className="container-x pt-[var(--section-y)]">
+      <div className="container-x pt-[calc(var(--section-y)*0.6)]">
         <SectionLabel num="02" className="mb-5">
           {p.label}
         </SectionLabel>

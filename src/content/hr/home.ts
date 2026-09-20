@@ -207,8 +207,8 @@ export const home = {
   },
   local: {
     label: "Područje rada",
-    title: "Web agencija iz Osijeka — za cijelu Slavoniju i Baranju.",
-    text: "Sjedište nam je u Osijeku, ali granica nema: radimo s obrtima, firmama i ustanovama iz cijele Osječko-baranjske županije i susjednih županija. Sastanak uživo u Osijeku ili online — kako ti odgovara.",
+    title: "Web agencija iz Osijeka.",
+    text: "Sjedište nam je u Osijeku, ali granica nema: radimo s obrtima, firmama i ustanovama iz cijele Hrvatske.",
     citiesLabel: "Gradovi u kojima radimo",
     cta: { label: "Izrada web stranica Osijek", href: "/izrada-web-stranica-osijek" },
   },

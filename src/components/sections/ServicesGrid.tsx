@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export function ServicesGrid() {
   const s = home.services;
   return (
-    <section className="container-x section-y relative">
+    <section className="container-x relative pt-[var(--section-y)] pb-[calc(var(--section-y)*0.5)]">
       <div className="mb-12 grid gap-8 md:mb-20 md:grid-cols-12 md:items-end">
         <div className="md:col-span-8">
           <SectionLabel num="01" className="mb-5">
@@ -75,11 +75,6 @@ export function ServicesGrid() {
         </div>
       </Reveal>
 
-      <Reveal className="mt-10 flex justify-center md:mt-14">
-        <Button href="/usluge" variant="ghost" size="md">
-          {s.cta}
-        </Button>
-      </Reveal>
     </section>
   );
 }
