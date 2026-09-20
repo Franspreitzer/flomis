@@ -6,25 +6,25 @@ category: "Savjeti"
 keywords: ["treba li mi web stranica", "web stranica ili facebook", "web stranica za obrt", "web stranica za malu firmu", "izrada web stranica za obrte osijek"]
 ---
 
-"Imam Facebook, zašto bi mi trebala web stranica?" — pitanje koje čujemo svaki tjedan. Pošteno: Facebook je besplatan, brz i tamo su vam ljudi. Ali ima tri rupe koje web stranica zatvara. Evo usporedbe bez prodajnog govora.
+"Imam Facebook, zašto bi mi trebala web stranica?" — pitanje koje čujemo svaki tjedan. Pošteno: Facebook je besplatan, brz i tamo su Vam ljudi. Ali ima tri rupe koje web stranica zatvara. Evo usporedbe bez prodajnog govora.
 
 ## Gdje je Facebook dovoljan
 
 - Radite isključivo preko preporuka i ne trebate nove kupce.
 - Objavljujete često (barem 2–3 puta tjedno) i imate vremena odgovarati na poruke.
-- Vaši kupci vas nalaze preko grupa i prijatelja, ne preko Googlea.
+- Vaši kupci Vas nalaze preko grupa i prijatelja, ne preko Googlea.
 
 Ako je sve troje točno, u redu — Facebook je za sada dovoljan.
 
 ## Gdje Facebook ne može
 
-### 1. Google vas ne prikazuje
+### 1. Google Vas ne prikazuje
 
-Kad netko u Osijeku upiše "servis klima Osijek", Google prikazuje web stranice i Google Business profile. Facebook stranice praktički nikad. A **preko 80 % ljudi prvo gugla** — čak i kad su dobili preporuku, provjere vas. Ako nemate stranicu, provjere konkurenciju.
+Kad netko u Osijeku upiše "servis klima Osijek", Google prikazuje web stranice i Google Business profile. Facebook stranice praktički nikad. A **preko 80 % ljudi prvo gugla** — čak i kad su dobili preporuku, provjere Vas. Ako nemate stranicu, provjere konkurenciju.
 
 ### 2. Ne kontrolirate ništa
 
-Facebook mijenja algoritam, pa objavu vidi 3 % pratitelja. Račun može biti privremeno blokiran bez objašnjenja. Kupci koji su vas pratili nisu vaši — Facebookovi su. Web stranica i domena su **vaše vlasništvo**: nitko vam ih ne može ugasiti.
+Facebook mijenja algoritam, pa objavu vidi 3 % pratitelja. Račun može biti privremeno blokiran bez objašnjenja. Kupci koji su Vas pratili nisu vaši — Facebookovi su. Web stranica i domena su **Vaše vlasništvo**: nitko Vam ih ne može ugasiti.
 
 ### 3. Povjerenje i ozbiljnost
 
@@ -32,7 +32,7 @@ Firma s vlastitom domenom (ime@vasafirma.hr) i urednom stranicom djeluje kao fir
 
 ## Što web stranica mora imati da se isplati
 
-Ne treba vam 20 stranica. Treba vam:
+Ne treba Vam 20 stranica. Treba Vam:
 
 1. **Jasna naslovnica**: što radite, gdje, za koga — u prvoj rečenici.
 2. **Usluge** — po jedna stranica za svaku glavnu uslugu.
@@ -45,8 +45,8 @@ To je prezentacijska stranica koja kod nas kreće **od 500 €** i gotova je za 
 
 ## Najbolje: oboje, ali s ulogama
 
-Web stranica je **baza**: tamo Google šalje ljude, tamo je cjenik, tamo se šalje upit. Facebook i Instagram su **izlozi**: objave, radovi, akcije — s linkom na stranicu. Kad tako postavite, svaka objava radi za vas dvostruko: i na mreži i na Googleu.
+Web stranica je **baza**: tamo Google šalje ljude, tamo je cjenik, tamo se šalje upit. Facebook i Instagram su **izlozi**: objave, radovi, akcije — s linkom na stranicu. Kad tako postavite, svaka objava radi za Vas dvostruko: i na mreži i na Googleu.
 
 ## Kako krenuti
 
-Ako imate samo Facebook, ne trebate ništa gasiti. Napravimo stranicu, povežemo je s Google Business profilom i Facebookom, a vi nastavite objavljivati kao dosad — samo sad s linkom koji vodi na nešto vaše. [Javite se](/kontakt) i recite čime se bavite; vratimo se s prijedlogom u 24 sata.
+Ako imate samo Facebook, ne trebate ništa gasiti. Napravimo stranicu, povežemo je s Google Business profilom i Facebookom, a Vi nastavite objavljivati kao dosad — samo sad s linkom koji vodi na nešto Vaše. [Javite se](/kontakt) i recite čime se bavite; vratimo se s prijedlogom u 24 sata.

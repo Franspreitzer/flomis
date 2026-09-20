@@ -10,7 +10,7 @@ export const about = {
   lead: [
     "Flomis je digitalna agencija osnovana 2026. u Osijeku s jednostavnom idejom: napraviti web koji radi za Vas.",
     "Ne radimo web stranice da samo dobro izgledaju. Radimo ih da budu jasne, brze, funkcionalne i napravljene s razlogom — da predstave ono što radite, izgrade povjerenje i pretvore posjetitelja u klijenta.",
-    "Svaki projekt krećemo od nule. Upoznamo vaš posao, ljude kojima se obraćate i ono što želite postići, a zatim sve to pretvaramo u digitalno iskustvo koje ima smisla.",
+    "Svaki projekt krećemo od nule. Upoznamo Vaš posao, ljude kojima se obraćate i ono što želite postići, a zatim sve to pretvaramo u digitalno iskustvo koje ima smisla.",
     "Bez šablona. Bez nepotrebnog kompliciranja.",
     "Samo stranice, web shopovi i AI asistenti koji donose upite, prodaju i uštedu vremena.",
   ].join("\n\n"),
@@ -58,7 +58,7 @@ export const about = {
     title: ["Ideje pretvaramo u", "digitalne proizvode."],
     statement: [
       "Naša misija je jednostavna: stvarati digitalna rješenja koja ljudima olakšavaju posao, a korisnicima čine iskustvo boljim.",
-      "Zato svaki projekt krećemo od pitanja što vam zapravo treba, kome se obraćate i što želite postići. Iz toga nastaju web stranice, web shopovi i digitalna rješenja koja nisu napravljena samo da izgledaju dobro, već da budu koristan dio vašeg poslovanja.",
+      "Zato svaki projekt krećemo od pitanja što Vam zapravo treba, kome se obraćate i što želite postići. Iz toga nastaju web stranice, web shopovi i digitalna rješenja koja nisu napravljena samo da izgledaju dobro, već da budu koristan dio Vašeg poslovanja.",
       "Promišljeno od početka. Napravljeno da traje.",
     ].join("\n\n"),
     goals: [
@@ -161,7 +161,7 @@ export const contact = {
     },
     message: {
       label: "Poruka",
-      placeholder: "Ukratko: čime se bavite, što vam treba i do kada.",
+      placeholder: "Ukratko: čime se bavite, što Vam treba i do kada.",
     },
     consent: "Slažem se da Flomis obrađuje moje podatke radi odgovora na upit, u skladu s ",
     consentLink: "politikom privatnosti",

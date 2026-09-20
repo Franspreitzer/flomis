@@ -87,7 +87,7 @@ export const cityPages: CityPage[] = [
 export const cityTemplate = {
   meta: (c: CityPage) => ({
     title: `Izrada web stranica ${c.name} — web agencija iz Osijeka, od 500 € | Flomis`,
-    description: `Izrada web stranica, web shopova i AI asistenata za firme ${c.from} i okolice (${c.county}). Agencija iz Osijeka, ${c.distanceKm} km od vas. Dizajn po mjeri, lokalni SEO, fiksna ponuda u 24 h.`,
+    description: `Izrada web stranica, web shopova i AI asistenata za firme ${c.from} i okolice (${c.county}). Agencija iz Osijeka, ${c.distanceKm} km od Vas. Dizajn po mjeri, lokalni SEO, fiksna ponuda u 24 h.`,
     keywords: [
       `izrada web stranica ${c.name.toLowerCase()}`,
       `web stranice ${c.name.toLowerCase()}`,
@@ -100,7 +100,7 @@ export const cityTemplate = {
   label: (c: CityPage) => `${c.name} · ${c.county}`,
   title: (c: CityPage) => ["Izrada web", `stranica ${c.name}.`],
   lead: (c: CityPage) =>
-    `Web stranice, web shopovi i AI asistenti za firme, obrte i OPG-ove ${c.from}. Flomis je agencija iz Osijeka — ${c.distanceKm} km od vas — koja radi stranice koje se učitavaju u sekundi i pojavljuju na Googleu kad netko upiše vašu djelatnost i "${c.name}".`,
+    `Web stranice, web shopovi i AI asistenti za firme, obrte i OPG-ove ${c.from}. Flomis je agencija iz Osijeka — ${c.distanceKm} km od Vas — koja radi stranice koje se učitavaju u sekundi i pojavljuju na Googleu kad netko upiše Vašu djelatnost i "${c.name}".`,
   whyLabel: "Zašto Flomis",
   whyTitle: (c: CityPage) => `Agencija iz Osijeka za firme ${c.from}.`,
   industriesLabel: "Za koga radimo",
@@ -112,7 +112,7 @@ export const cityTemplate = {
   faq: (c: CityPage) => [
     {
       q: `Radite li s firmama ${c.from}?`,
-      a: `Da. ${c.name} je ${c.distanceKm} km od našeg ureda u Osijeku — prvi sastanak može biti uživo kod vas ili online. Većina komunikacije tijekom projekta ide e-mailom i video pozivom, pa udaljenost ne usporava ništa.`,
+      a: `Da. ${c.name} je ${c.distanceKm} km od našeg ureda u Osijeku — prvi sastanak može biti uživo kod Vas ili online. Većina komunikacije tijekom projekta ide e-mailom i video pozivom, pa udaljenost ne usporava ništa.`,
     },
     {
       q: `Koliko košta web stranica za firmu ${c.from}?`,

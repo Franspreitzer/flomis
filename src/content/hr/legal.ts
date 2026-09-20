@@ -3,7 +3,7 @@ export type LegalSection = { title: string; paragraphs: string[]; list?: string[
 export const privacy = {
   meta: {
     title: "Politika privatnosti | Flomis",
-    description: "Kako Flomis j.d.o.o. prikuplja, koristi i štiti vaše osobne podatke u skladu s GDPR-om.",
+    description: "Kako Flomis j.d.o.o. prikuplja, koristi i štiti Vaše osobne podatke u skladu s GDPR-om.",
   },
   label: "Pravno",
   title: "Politika privatnosti",
@@ -17,7 +17,7 @@ export const privacy = {
     },
     {
       title: "2. Koje podatke prikupljamo",
-      paragraphs: ["Prikupljamo samo podatke koji su nam potrebni za odgovor na vaš upit i pružanje usluga:"],
+      paragraphs: ["Prikupljamo samo podatke koji su nam potrebni za odgovor na Vaš upit i pružanje usluga:"],
       list: [
         "Podaci koje nam sami pošaljete putem kontakt forme: ime i prezime, e-mail adresa, telefon, naziv firme i sadržaj poruke.",
         "Tehnički podaci prilikom posjeta stranici: IP adresa, vrsta preglednika, uređaj, vrijeme posjeta (u anonimiziranom obliku, ako pristanete na analitičke kolačiće).",
@@ -30,7 +30,7 @@ export const privacy = {
       list: [
         "Odgovor na upit i izrada ponude — pravna osnova: poduzimanje radnji prije sklapanja ugovora (čl. 6. st. 1. t. b GDPR-a).",
         "Pružanje ugovorenih usluga i izdavanje računa — pravna osnova: izvršenje ugovora i zakonska obveza (čl. 6. st. 1. t. b i c).",
-        "Analitika posjećenosti stranice — pravna osnova: vaša privola putem cookie bannera (čl. 6. st. 1. t. a).",
+        "Analitika posjećenosti stranice — pravna osnova: Vaša privola putem cookie bannera (čl. 6. st. 1. t. a).",
         "Zaštita stranice od zlouporabe (npr. spam) — pravna osnova: legitimni interes (čl. 6. st. 1. t. f).",
       ],
     },
@@ -48,7 +48,7 @@ export const privacy = {
       list: [
         "Vercel Inc. — hosting web stranice (serveri u EU, standardne ugovorne klauzule).",
         "Resend — slanje e-mail poruka iz kontakt forme.",
-        "Pružatelj analitike (samo uz vašu privolu) — anonimizirana statistika posjeta.",
+        "Pružatelj analitike (samo uz Vašu privolu) — anonimizirana statistika posjeta.",
       ],
     },
     {
@@ -92,21 +92,21 @@ export const cookies = {
     {
       title: "1. Što su kolačići",
       paragraphs: [
-        "Kolačići (cookies) su male tekstualne datoteke koje web stranica sprema na vaš uređaj. Koriste se da bi stranica radila ispravno, pamtila vaše postavke i, uz vašu privolu, mjerila posjećenost.",
+        "Kolačići (cookies) su male tekstualne datoteke koje web stranica sprema na Vaš uređaj. Koriste se da bi stranica radila ispravno, pamtila Vaše postavke i, uz Vašu privolu, mjerila posjećenost.",
       ],
     },
     {
       title: "2. Koje kolačiće koristimo",
       paragraphs: ["Na flomis.hr koristimo dvije kategorije kolačića:"],
       list: [
-        "Nužni kolačići — potrebni za osnovni rad stranice (npr. pamćenje vaše odluke o kolačićima: \"flomis-consent\", trajanje 12 mjeseci). Ne zahtijevaju privolu.",
-        "Analitički kolačići — koriste se isključivo uz vašu privolu, za anonimiziranu statistiku posjeta (koje stranice se gledaju, koliko dugo, s kojeg uređaja). Pomažu nam poboljšati stranicu.",
+        "Nužni kolačići — potrebni za osnovni rad stranice (npr. pamćenje Vaše odluke o kolačićima: \"flomis-consent\", trajanje 12 mjeseci). Ne zahtijevaju privolu.",
+        "Analitički kolačići — koriste se isključivo uz Vašu privolu, za anonimiziranu statistiku posjeta (koje stranice se gledaju, koliko dugo, s kojeg uređaja). Pomažu nam poboljšati stranicu.",
       ],
     },
     {
       title: "3. Kolačići trećih strana",
       paragraphs: [
-        "Ne koristimo marketinške kolačiće niti kolačiće za praćenje na drugim stranicama. Ako u budućnosti dodamo alate trećih strana (npr. ugrađene videe ili mape), oni će se učitati tek nakon vaše privole.",
+        "Ne koristimo marketinške kolačiće niti kolačiće za praćenje na drugim stranicama. Ako u budućnosti dodamo alate trećih strana (npr. ugrađene videe ili mape), oni će se učitati tek nakon Vaše privole.",
       ],
     },
     {

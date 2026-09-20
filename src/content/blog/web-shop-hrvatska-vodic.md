@@ -13,7 +13,7 @@ Otvaranje web shopa u Hrvatskoj nije samo "objavimo proizvode i čekamo narudžb
 | | Shopify | WooCommerce (WordPress) |
 | --- | --- | --- |
 | Mjesečna naknada | da (od ~30 €) | ne (samo hosting) |
-| Održavanje | Shopify brine o svemu | vi / agencija |
+| Održavanje | Shopify brine o svemu | Vi / agencija |
 | Fleksibilnost | manja, ali dovoljna za 90 % shopova | velika |
 | Hrvatska plaćanja | preko dodataka (CorvusPay, WSPay, Stripe) | dodaci za sve |
 | Za koga | želite stabilnost i ne želite razmišljati o tehnici | trebate specifičnosti ili već imate WordPress |
@@ -35,7 +35,7 @@ Kartično plaćanje zahtijeva ugovor s bankom ili procesorom (traje 1–3 tjedna
 
 Za prodaju u web shopu vrijede ista pravila kao za fizičku trgovinu: račun se izdaje i fiskalizira (ako se plaća gotovinom/pouzećem ili karticom). Rješenja:
 
-- Shop povezan s vašim **računovodstvenim programom** (Synesis, Minimax, e-Računi…) preko integracije
+- Shop povezan s Vašim **računovodstvenim programom** (Synesis, Minimax, e-Računi…) preko integracije
 - **Fiskalni dodatak** za WooCommerce ili Shopify aplikacija
 - Ručno izdavanje iz postojećeg programa za manji broj narudžbi
 
@@ -55,7 +55,7 @@ Web shop mora imati: **Uvjete kupnje**, **Politiku privatnosti**, **Politiku kol
 
 ## 6. Proizvodi: fotografije, opisi, kategorije
 
-Loše fotografije su razlog broj jedan zašto ljudi ne kupuju. Ne treba profesionalni studio, ali treba: ujednačena pozadina, dobro svjetlo, više kuteva. Opisi: ne "kvalitetan proizvod", nego dimenzije, materijal, za što služi, što je u paketu. Kategorije: onako kako kupac razmišlja, ne kako je u vašem skladištu.
+Loše fotografije su razlog broj jedan zašto ljudi ne kupuju. Ne treba profesionalni studio, ali treba: ujednačena pozadina, dobro svjetlo, više kuteva. Opisi: ne "kvalitetan proizvod", nego dimenzije, materijal, za što služi, što je u paketu. Kategorije: onako kako kupac razmišlja, ne kako je u Vašem skladištu.
 
 ## 7. Koliko košta i koliko traje
 

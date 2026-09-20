@@ -1,12 +1,12 @@
 ---
-title: "Lokalni SEO za firme u Osijeku: 10 koraka da vas Google prikaže prvima"
+title: "Lokalni SEO za firme u Osijeku: 10 koraka da Vas Google prikaže prvima"
 description: "Praktičan vodič za lokalni SEO u Osijeku i Osječko-baranjskoj županiji: Google Business Profil, ključne riječi s nazivom grada, recenzije, lokalni linkovi i tehničke osnove."
 date: 2026-09-17
 category: "SEO"
 keywords: ["lokalni seo osijek", "google business profil", "seo osijek", "kako se pojaviti na googleu", "seo za male firme", "google karte firma"]
 ---
 
-Kad netko u Osijeku upiše "vodoinstalater", "računovodstvo" ili "izrada web stranica", Google ne prikazuje najbolju firmu — prikazuje **najbolje optimiziranu**. Lokalni SEO je skup stvari koje možete napraviti (dio i sami, besplatno) da to budete vi. Evo redom.
+Kad netko u Osijeku upiše "vodoinstalater", "računovodstvo" ili "izrada web stranica", Google ne prikazuje najbolju firmu — prikazuje **najbolje optimiziranu**. Lokalni SEO je skup stvari koje možete napraviti (dio i sami, besplatno) da to budete Vi. Evo redom.
 
 ## 1. Google Business Profil — najvažnijih 30 minuta koje ćete uložiti
 
@@ -44,11 +44,11 @@ Ako radite kuhinje, ormare i vrata, napravite tri stranice, ne jednu "Usluge". S
 
 ## 6. Strukturirani podaci (schema.org)
 
-Kôd u pozadini stranice koji Googleu govori: ovo je lokalna firma, ovo je adresa, ovo su radno vrijeme i usluge. Ne vidi se okom, ali Google ga čita i za to nagrađuje bogatijim prikazom. Tehnički dio — ako vam agencija ne zna reći ima li stranica *LocalBusiness* schemu, to je znak.
+Kôd u pozadini stranice koji Googleu govori: ovo je lokalna firma, ovo je adresa, ovo su radno vrijeme i usluge. Ne vidi se okom, ali Google ga čita i za to nagrađuje bogatijim prikazom. Tehnički dio — ako Vam agencija ne zna reći ima li stranica *LocalBusiness* schemu, to je znak.
 
 ## 7. Brzina i mobitel
 
-Preko 70 % lokalnih pretraga dolazi s mobitela. Ako se stranica učitava dulje od 3 sekunde ili se tekst ne vidi bez zumiranja, Google vas spušta. Provjerite besplatno na [PageSpeed Insights](https://pagespeed.web.dev) — cilj je zeleno (90+) na mobitelu.
+Preko 70 % lokalnih pretraga dolazi s mobitela. Ako se stranica učitava dulje od 3 sekunde ili se tekst ne vidi bez zumiranja, Google Vas spušta. Provjerite besplatno na [PageSpeed Insights](https://pagespeed.web.dev) — cilj je zeleno (90+) na mobitelu.
 
 ## 8. Lokalni linkovi i spominjanja
 
@@ -56,16 +56,16 @@ Google vjeruje firmama koje spominju drugi. Gdje se možete besplatno pojaviti:
 
 - Poslovni imenici: Poslovna.hr, Fininfo, Companywall, Bizit, Žute stranice
 - Lokalni portali i udruge: HGK Županijska komora Osijek, Osječko-baranjska županija, Grad Osijek (poduzetnički portali)
-- Partneri i dobavljači — zamolite da vas linkaju s "Partneri" stranice
+- Partneri i dobavljači — zamolite da Vas linkaju s "Partneri" stranice
 - Sponzorstva lokalnih klubova i događanja (link s njihove stranice vrijedi)
 
 ## 9. Sadržaj koji odgovara na lokalna pitanja
 
-Blog nije za "novosti iz firme". Blog je da odgovorite na pitanja koja vaši kupci guglaju: *koliko košta*, *kako odabrati*, *što treba za*. Svaki članak je nova prilika da vas Google pokaže. Ovaj članak koji čitate je upravo to.
+Blog nije za "novosti iz firme". Blog je da odgovorite na pitanja koja vaši kupci guglaju: *koliko košta*, *kako odabrati*, *što treba za*. Svaki članak je nova prilika da Vas Google pokaže. Ovaj članak koji čitate je upravo to.
 
 ## 10. Mjerite
 
-Bez Google Search Consolea ne znate za koje vas riječi ljudi nalaze. Besplatan je, postavlja se u 10 minuta i pokazuje točno što raditi dalje. Uz njega, u Business Profilu pratite pozive, klikove na rute i posjete stranici.
+Bez Google Search Consolea ne znate za koje Vas riječi ljudi nalaze. Besplatan je, postavlja se u 10 minuta i pokazuje točno što raditi dalje. Uz njega, u Business Profilu pratite pozive, klikove na rute i posjete stranici.
 
 ## Koliko traje?
 

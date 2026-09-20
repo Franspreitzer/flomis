@@ -25,19 +25,19 @@ To su cijene po kojima radimo mi u Flomisu u Osijeku. Ako dobijete ponudu znatno
 
 ### 1. Šablona ili dizajn po mjeri
 
-Najveća razlika u cijeni. Stranica iz gotove WordPress teme može biti spremna za par dana, ali izgleda kao tisuću drugih i teško se prilagođava. Dizajn po mjeri znači da netko sjedne, razmisli o vašim kupcima i nacrta stranicu koja vodi posjetitelja do jedne stvari — da vas nazove ili pošalje upit.
+Najveća razlika u cijeni. Stranica iz gotove WordPress teme može biti spremna za par dana, ali izgleda kao tisuću drugih i teško se prilagođava. Dizajn po mjeri znači da netko sjedne, razmisli o Vašim kupcima i nacrta stranicu koja vodi posjetitelja do jedne stvari — da Vas nazove ili pošalje upit.
 
 ### 2. Broj stranica i funkcionalnosti
 
-Pet stranica (Početna, O nama, Usluge, Galerija, Kontakt) je jedno. Rezervacijski sustav, višejezičnost, korisnički računi ili integracija s vašim programom za račune su drugo. Svaka funkcionalnost je rad — i to je u redu, samo mora biti napisano u ponudi.
+Pet stranica (Početna, O nama, Usluge, Galerija, Kontakt) je jedno. Rezervacijski sustav, višejezičnost, korisnički računi ili integracija s Vašim programom za račune su drugo. Svaka funkcionalnost je rad — i to je u redu, samo mora biti napisano u ponudi.
 
 ### 3. Tekst i fotografije
 
-Ovo se najčešće zaboravi. Ako nemate tekstove i slike, netko ih mora napraviti. Dobra agencija će vam pomoći s tekstom (mi to radimo unutar cijene), a fotografiranje se obično naplaćuje zasebno.
+Ovo se najčešće zaboravi. Ako nemate tekstove i slike, netko ih mora napraviti. Dobra agencija će Vam pomoći s tekstom (mi to radimo unutar cijene), a fotografiranje se obično naplaćuje zasebno.
 
 ### 4. Brzina i SEO
 
-Stranica koja se učitava 6 sekundi na mobitelu gubi pola posjetitelja prije nego išta pročitaju. Optimizacija brzine, ispravna struktura za Google i lokalni SEO (da vas nađu kad netko upiše "stolar Osijek") dio su ozbiljne izrade — ne dodatak.
+Stranica koja se učitava 6 sekundi na mobitelu gubi pola posjetitelja prije nego išta pročitaju. Optimizacija brzine, ispravna struktura za Google i lokalni SEO (da Vas nađu kad netko upiše "stolar Osijek") dio su ozbiljne izrade — ne dodatak.
 
 ### 5. Što se događa nakon lansiranja
 
@@ -46,17 +46,17 @@ Domena, hosting, SSL certifikat, sigurnosne nadogradnje, backupi. Ako to nitko n
 ## Skriveni troškovi na koje treba paziti
 
 - **Licence i pretplate** — Shopify, plaćeni dodaci, premium teme. Legitimno, ali mora biti transparentno.
-- **"Vlasništvo" domene** — domena mora biti registrirana na *vašu* firmu, ne na agenciju. Uvijek.
+- **"Vlasništvo" domene** — domena mora biti registrirana na *Vašu* firmu, ne na agenciju. Uvijek.
 - **Izmjene nakon lansiranja** — pitajte koliko košta promjena teksta ili slike. Kod nas je to dio paketa održavanja.
 - **Prijenos stranice** — ako jednog dana želite drugu agenciju, možete li stranicu odnijeti sa sobom? Ako ne, to je ovisnost, ne usluga.
 
 ## Isplati li se web stranica za mali obrt u Slavoniji?
 
-Da, ako donosi upite. Jedna kuhinja po mjeri, jedna renovacija kupaonice, jedan servis klime — bilo koji od tih poslova pokriva trošak stranice. Ljudi u Osijeku, Đakovu ili Vinkovcima danas prvo guglaju, pa tek onda zovu. Ako vas nema na Googleu, posao dobiva onaj tko jest.
+Da, ako donosi upite. Jedna kuhinja po mjeri, jedna renovacija kupaonice, jedan servis klime — bilo koji od tih poslova pokriva trošak stranice. Ljudi u Osijeku, Đakovu ili Vinkovcima danas prvo guglaju, pa tek onda zovu. Ako Vas nema na Googleu, posao dobiva onaj tko jest.
 
 ## Kako izgleda proces kod nas
 
-1. **Razgovor** (30 min, uživo u Osijeku ili online) — što radite, tko su vam kupci, što želite od stranice.
+1. **Razgovor** (30 min, uživo u Osijeku ili online) — što radite, tko su Vam kupci, što želite od stranice.
 2. **Fiksna ponuda u 24 h** — cijena i rok. Ta se cijena ne mijenja.
 3. **Dizajn koji odobravate** prije nego napišemo i jedan redak koda.
 4. **Razvoj, testiranje, lansiranje** — domena, hosting, SSL, Google Business, sve postavljamo mi.

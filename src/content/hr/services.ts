@@ -388,7 +388,7 @@ export const services: Service[] = [
     ],
     faq: [
       {
-        q: "Održavate li stranice koje niste vi napravili?",
+        q: "Održavate li stranice koje niste Vi napravili?",
         a: "Da. Prvo napravimo pregled stanja, pa preporučimo paket. Ponekad se isplati prvo popraviti temelje.",
       },
       {
