@@ -104,12 +104,12 @@ export const home = {
     ],
     cta: { label: "Želim AI asistenta", href: "/usluge/ai-asistenti" },
     demo: {
-      botName: "Flomis asistent",
+      botName: "Flomis Asistent",
       status: "online",
       placeholder: "Odaberi pitanje ispod…",
-      restart: "Ponovi demo",
+      restart: "Počni ispočetka",
       typingLabel: "Asistent tipka",
-      demoTag: "demo",
+      demoTag: "AI",
       intro: "Bok! Ja sam AI asistent. Pitaj me bilo što o uslugama, cijenama ili rokovima.",
       conversation: [
         {
@@ -139,15 +139,15 @@ export const home = {
     openLabel: "Otvori AI asistenta",
     closeLabel: "Zatvori asistenta",
     bubble: "Pitaj me bilo što",
-    title: "Flomis asistent",
-    subtitle: "Demo · odgovara odmah",
-    intro: "Bok! 👋 Ja sam demo AI asistent. Ovako bi izgledao asistent na tvojoj stranici. Pitaj me o cijenama, rokovima ili uslugama.",
+    title: "Flomis Asistent",
+    subtitle: "AI · razgovaraj s nama odmah",
+    intro: "Bok! 👋 Ja sam Flomis Asistent. Pitaj me o cijenama, rokovima ili uslugama — a ako želiš ponudu, spojim te s timom.",
     inputPlaceholder: "Napiši pitanje…",
     send: "Pošalji",
     fallback:
       "Dobro pitanje! Za to ti najbolje može odgovoriti netko iz tima. Javi se preko kontakt forme ili na e-mail — odgovaramo u roku 24 sata.",
     fallbackCta: { label: "Otvori kontakt", href: "/kontakt" },
-    exhausted: "To je bilo puno pitanja za demo. 🙂 Za sve ostalo:",
+    exhausted: "Puno pitanja — super! 🙂 Za sve ostalo najbrže je preko kontakta:",
     extra: [
       {
         q: "Što radite?",
