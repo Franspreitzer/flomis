@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { PAREN_CLOSE_PATH, PAREN_OPEN_PATH, PARENS_VIEWBOX } from "@/components/brand/logo-paths";
+import { PAREN_CLOSE_D, PAREN_OPEN_D, PAREN_STROKE, PARENS_VIEWBOX } from "@/components/brand/Parens";
 import { Button } from "@/components/ui/Button";
 import { notFound as c } from "@/content";
 import { gsap } from "@/lib/gsap";
@@ -79,10 +79,18 @@ export function NotFoundScene() {
     <section ref={stage} className="container-x relative flex min-h-[100svh] flex-col justify-center pb-16 pt-[calc(var(--header-h)+3rem)]">
       <div className="grid items-center gap-12 lg:grid-cols-12">
         <div className="relative flex items-center justify-center lg:col-span-6">
-          <svg viewBox={PARENS_VIEWBOX} className="w-[min(70vw,420px)] fill-accent" aria-hidden="true">
-            <path ref={openRef} d={PAREN_OPEN_PATH} />
-            <path ref={closeRef} d={PAREN_CLOSE_PATH} />
-          </svg>
+          <svg
+              viewBox={PARENS_VIEWBOX}
+              className="w-[min(70vw,420px)] overflow-visible text-accent"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={PAREN_STROKE}
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path ref={openRef} d={PAREN_OPEN_D} />
+              <path ref={closeRef} d={PAREN_CLOSE_D} />
+            </svg>
           <span ref={numRef} className="absolute font-display text-[clamp(4rem,14vw,9rem)] font-bold tracking-tighter will-change-transform" aria-label={c.code}>
             {c.code}
           </span>

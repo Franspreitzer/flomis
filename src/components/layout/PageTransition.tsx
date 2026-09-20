@@ -88,7 +88,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
               animate={{ opacity: 1, scale: 1, transition: { delay: 0.25, duration: 0.4 } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
             >
-              <Parens className="h-16 w-auto text-accent" gap={6} />
+              <Parens className="h-20 w-auto text-accent md:h-24" gap={4} />
             </m.div>
           </m.div>
         )}

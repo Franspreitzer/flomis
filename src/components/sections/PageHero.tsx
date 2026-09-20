@@ -46,8 +46,12 @@ export function PageHero({ label, title, lead, crumbs, aside, size = "xl", class
       {(lead || aside) && (
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
           {lead && (
-            <Reveal className="md:col-span-7" delay={0.3}>
-              <p className="text-lead max-w-2xl">{lead}</p>
+            <Reveal className="space-y-5 md:col-span-7" delay={0.3}>
+              {lead.split("\n\n").map((para, i) => (
+                <p key={i} className={i === 0 ? "text-lead max-w-2xl" : "max-w-2xl text-base leading-relaxed text-paper-2 md:text-lg"}>
+                  {para}
+                </p>
+              ))}
             </Reveal>
           )}
           {aside && (

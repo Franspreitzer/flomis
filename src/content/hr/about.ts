@@ -5,9 +5,15 @@ export const about = {
       "Flomis je digitalna agencija osnovana 2026. u Osijeku. Misija: web stranice, web shopovi i AI asistenti koji firmama iz Slavonije donose upite i prodaju — na razini najboljih, po lokalnim cijenama.",
   },
   label: "O nama",
-  title: ["Iz Osijeka.", "Bez izgovora."],
-  lead:
-    "Flomis je digitalna agencija osnovana 2026. u Osijeku s jednim ciljem: da firme iz Slavonije imaju web koji donosi posao — ne lijepu sliku koja skuplja prašinu. Bez korporativnog praznog govora, bez šablona, bez agencijskih cjenika iz Zagreba.",
+  title: ["Web", "s razlogom."],
+  /** Odlomci odvojeni s \n\n */
+  lead: [
+    "Flomis je digitalna agencija osnovana 2026. u Osijeku s jednostavnom idejom: napraviti web koji radi za Vas.",
+    "Ne radimo web stranice da samo dobro izgledaju. Radimo ih da budu jasne, brze, funkcionalne i napravljene s razlogom — da predstave ono što radite, izgrade povjerenje i pretvore posjetitelja u klijenta.",
+    "Svaki projekt krećemo od nule. Upoznamo vaš posao, ljude kojima se obraćate i ono što želite postići, a zatim sve to pretvaramo u digitalno iskustvo koje ima smisla.",
+    "Bez šablona. Bez nepotrebnog kompliciranja.",
+    "Samo stranice, web shopovi i AI asistenti koji donose upite, prodaju i uštedu vremena.",
+  ].join("\n\n"),
   manifesto: {
     label: "Kako radimo",
     items: [
@@ -49,9 +55,12 @@ export const about = {
   },
   mission: {
     label: "Misija",
-    title: ["Slavonija zaslužuje", "web kakav ima Zagreb."],
-    statement:
-      "Godinama smo gledali kako firme iz Osijeka, Đakova ili Vinkovaca plaćaju agencije iz Zagreba ili se zadovoljavaju stranicom od rođaka. Ni jedno ni drugo nije rješenje. Zato smo 2026. osnovali Flomis — agenciju koja radi na razini najboljih, a sjedi u Dunavskoj ulici.",
+    title: ["Ideje pretvaramo u", "digitalne proizvode."],
+    statement: [
+      "Naša misija je jednostavna: stvarati digitalna rješenja koja ljudima olakšavaju posao, a korisnicima čine iskustvo boljim.",
+      "Zato svaki projekt krećemo od pitanja što vam zapravo treba, kome se obraćate i što želite postići. Iz toga nastaju web stranice, web shopovi i digitalna rješenja koja nisu napravljena samo da izgledaju dobro, već da budu koristan dio vašeg poslovanja.",
+      "Promišljeno od početka. Napravljeno da traje.",
+    ].join("\n\n"),
     goals: [
       {
         num: "01",

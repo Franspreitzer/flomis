@@ -5,7 +5,7 @@ import { useLenis } from "lenis/react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/utils";
-import { PAREN_CLOSE_PATH, PAREN_OPEN_PATH, PARENS_VIEWBOX } from "@/components/brand/logo-paths";
+import { PAREN_CLOSE_D, PAREN_OPEN_D, PAREN_STROKE, PARENS_VIEWBOX } from "@/components/brand/Parens";
 import { ui } from "@/content";
 import { useAppState } from "./AppState";
 
@@ -85,9 +85,17 @@ export function Preloader() {
           aria-label={ui.preloader.loading}
         >
           <div className="relative flex items-center justify-center">
-            <svg viewBox={PARENS_VIEWBOX} className="h-20 w-auto fill-accent md:h-28" aria-hidden="true">
-              <path ref={openRef} d={PAREN_OPEN_PATH} />
-              <path ref={closeRef} d={PAREN_CLOSE_PATH} />
+            <svg
+              viewBox={PARENS_VIEWBOX}
+              className="h-20 w-auto overflow-visible text-accent md:h-28"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={PAREN_STROKE}
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path ref={openRef} d={PAREN_OPEN_D} />
+              <path ref={closeRef} d={PAREN_CLOSE_D} />
             </svg>
             <span
               ref={numRef}

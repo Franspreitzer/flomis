@@ -54,7 +54,7 @@ export function Hero() {
         />
 
         <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-12 md:items-end">
-          <m.p {...fade(0.55)} className="text-lead max-w-xl md:col-span-6">
+          <m.p {...fade(0.55)} className="text-lead max-w-xl whitespace-pre-line md:col-span-6">
             {h.lead}
           </m.p>
           <m.div {...fade(0.7)} className="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">

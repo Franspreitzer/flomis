@@ -47,11 +47,7 @@ export const site = {
     "Virovitica",
   ],
   regions: ["Osječko-baranjska županija", "Vukovarsko-srijemska županija", "Brodsko-posavska županija", "Slavonija i Baranja"],
-  social: [
-    { label: "Instagram", href: "https://instagram.com/[FLOMIS]", handle: "@[flomis]" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/[flomis]", handle: "/flomis" },
-    { label: "Facebook", href: "https://facebook.com/[flomis]", handle: "/flomis" },
-  ],
+  social: [{ label: "Instagram", href: "https://www.instagram.com/flomis.digital/", handle: "@flomis.digital" }],
 } as const;
 
 export const nav = {

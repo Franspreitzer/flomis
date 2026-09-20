@@ -44,7 +44,7 @@ export default function AboutPage() {
               </SectionLabel>
               <SplitText as="h2" text={about.story.title} className="text-display-lg" />
               <Reveal className="mt-10 hidden lg:block">
-                <Parens className="w-40 text-ink/10" gap={6} />
+                <Parens className="w-40 text-ink/15" gap={6} strokeWidth={5} />
               </Reveal>
             </div>
           </div>
@@ -77,8 +77,12 @@ export default function AboutPage() {
             {about.mission.label}
           </SectionLabel>
           <SplitText as="h2" text={about.mission.title} className="text-display-lg" />
-          <Reveal className="mt-8 max-w-3xl">
-            <p className="text-lead text-ink">{about.mission.statement}</p>
+          <Reveal className="mt-8 max-w-3xl space-y-4">
+            {about.mission.statement.split("\n\n").map((para, i) => (
+              <p key={i} className={i === 0 ? "text-lead text-ink" : "text-lg leading-relaxed text-paper-2"}>
+                {para}
+              </p>
+            ))}
           </Reveal>
           <Reveal stagger="[data-reveal-item]" className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
             {about.mission.goals.map((g) => (

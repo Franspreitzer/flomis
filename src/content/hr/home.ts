@@ -7,10 +7,9 @@ export const home = {
   hero: {
     eyebrow: "Digitalna agencija · Osijek, Slavonija i Baranja",
     // Svaka stavka je jedan redak naslova (animirano riječ po riječ)
-    title: ["Web koji", "radi za", "tvoju firmu."],
+    title: ["Web koji", "radi za", "Vas."],
     accentWord: "radi",
-    lead:
-      "Stranice, web shopovi i AI asistenti koji donose upite, prodaju i uštedu vremena. Bez šablona, bez praznih obećanja.",
+    lead: ["Web stranice. Web shopovi. AI rješenja.", "Dobro osmišljeno, dobro izvedeno."].join("\n"),
     ctaPrimary: { label: "Zatraži ponudu", href: "/kontakt" },
     ctaSecondary: { label: "Pogledaj radove", href: "/radovi" },
     scrollHint: "Skrolaj",
