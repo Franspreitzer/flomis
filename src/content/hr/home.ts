@@ -79,21 +79,17 @@ export const home = {
       },
     ],
   },
-  stats: {
-    label: "Brojke",
-    title: "Rezultati, ne obećanja.",
-    items: [
-      { value: 48, suffix: "+", decimals: 0, label: "lansiranih projekata", note: "[PRIMJER]" },
-      { value: 98, suffix: "%", decimals: 0, label: "klijenata nas preporučuje", note: "[PRIMJER]" },
-      { value: 0.8, suffix: "s", decimals: 1, label: "prosječno vrijeme učitavanja", note: "[PRIMJER]" },
-      { value: 24, suffix: "h", decimals: 0, label: "maksimalno vrijeme odgovora", note: "" },
-    ],
-  },
   work: {
     label: "Radovi",
-    title: "Izabrani projekti.",
-    lead: "Svaki projekt ima jedan cilj: da klijentu donese više posla.",
-    cta: "Svi radovi",
+    title: "Prvi projekti su u izradi.",
+    lead: "Flomis je osnovan u rujnu 2026. Prve stranice i AI asistenti trenutno se rade — čim budu online, bit će ovdje sa stvarnim brojkama, ne obećanjima.",
+    cta: "Budi među prvima",
+    ctaHref: "/kontakt",
+    perks: [
+      { title: "Cijena pokretanja", text: "Prvih deset klijenata dobiva fiksnu cijenu koja se kasnije neće ponoviti." },
+      { title: "Maksimalna pažnja", text: "Malo projekata istovremeno znači da tvoj dobiva puno vremena." },
+      { title: "Studija slučaja", text: "Tvoj projekt postaje prva priča na ovoj stranici — s linkom na tvoju firmu." },
+    ],
   },
   ai: {
     label: "AI asistenti",
@@ -151,6 +147,7 @@ export const home = {
     fallback:
       "Dobro pitanje! Za to ti najbolje može odgovoriti netko iz tima. Javi se preko kontakt forme ili na e-mail — odgovaramo u roku 24 sata.",
     fallbackCta: { label: "Otvori kontakt", href: "/kontakt" },
+    exhausted: "To je bilo puno pitanja za demo. 🙂 Za sve ostalo:",
     extra: [
       {
         q: "Što radite?",
@@ -176,33 +173,6 @@ export const home = {
         q: "Hvala",
         k: ["hvala", "super", "odlično", "odlicno", "ok"],
         a: "Nema na čemu! Ako želiš, pošalji upit preko kontakt forme pa nastavljamo uživo.",
-      },
-    ],
-  },
-  testimonials: {
-    label: "Recenzije",
-    title: "Što kažu klijenti.",
-    items: [
-      {
-        quote:
-          "Nova stranica nam je u prva dva mjeseca donijela više upita nego stara u godinu dana. Sve je bilo jasno, brzo i bez komplikacija.",
-        name: "[Ime Prezime]",
-        role: "[vlasnik], [Naziv firme]",
-        tag: "[PRIMJER]",
-      },
-      {
-        quote:
-          "Web shop je bio online u roku, a AI asistent nam je skinuo pola upita s telefona. Konačno imamo vremena za posao.",
-        name: "[Ime Prezime]",
-        role: "[direktorica], [Naziv firme]",
-        tag: "[PRIMJER]",
-      },
-      {
-        quote:
-          "Nisu nas gnjavili tehničkim izrazima. Rekli su što treba, napravili i drže stranicu brzom već drugu godinu.",
-        name: "[Ime Prezime]",
-        role: "[voditelj], [Naziv firme]",
-        tag: "[PRIMJER]",
       },
     ],
   },

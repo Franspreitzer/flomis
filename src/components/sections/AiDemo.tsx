@@ -90,7 +90,7 @@ export function AiDemo() {
     <section className="container-x section-y relative overflow-hidden">
       <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-6">
-          <SectionLabel num="05" className="mb-5">
+          <SectionLabel num="04" className="mb-5">
             {a.label}
           </SectionLabel>
           <SplitText as="h2" text={a.title} className="text-display-md" />

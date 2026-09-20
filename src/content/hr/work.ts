@@ -20,6 +20,9 @@ export type Project = {
   stack: string[];
 };
 
+/** Dok nema stvarnih projekata: stranica Radovi prikazuje "uskoro", a projekti ispod se ne objavljuju. */
+export const workComingSoon = true;
+
 export const workIntro = {
   meta: {
     title: "Radovi — Portfolio web stranica, shopova i AI rješenja | Flomis",
@@ -31,6 +34,17 @@ export const workIntro = {
   lead:
     "Ne mjerimo uspjeh nagradama nego upitima, prodajom i uštedom vremena. Ovo su neki od projekata.",
   filters: ["Sve", "Web stranica", "Web shop", "AI asistent"],
+  soon: {
+    label: "Uskoro",
+    title: ["Prvi radovi", "stižu."],
+    lead: "Osnovani smo u rujnu 2026. i prvi projekti su u izradi. Ne objavljujemo lažne primjere ni tuđe stranice — ovdje će biti samo pravi projekti, sa stvarnim rezultatima i linkovima na klijente.",
+    steps: [
+      { when: "Sad", text: "Radimo prve web stranice i AI asistente za firme iz Osijeka i okolice." },
+      { when: "Uskoro", text: "Prve studije slučaja: što je klijent trebao, što smo napravili, što se promijenilo." },
+      { when: "Ti?", text: "Ako kreneš s nama sad, tvoj projekt je prva priča na ovoj stranici." },
+    ],
+    cta: { label: "Želim biti prvi projekt", href: "/kontakt" },
+  },
   caseLabels: {
     client: "Klijent",
     year: "Godina",

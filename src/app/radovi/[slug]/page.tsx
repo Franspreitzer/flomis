@@ -9,13 +9,15 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
 import { TransitionLink } from "@/components/ui/TransitionLink";
-import { getProject, projects, ui, workIntro } from "@/content";
+import { getProject, projects, ui, workComingSoon, workIntro } from "@/content";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return workComingSoon ? [] : projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function ProjectPage({ params }: Params) {
   const { slug } = await params;
   const p = getProject(slug);
-  if (!p) notFound();
+  if (!p || workComingSoon) notFound();
   const L = workIntro.caseLabels;
   const idx = projects.findIndex((x) => x.slug === p.slug);
   const next = projects[(idx + 1) % projects.length];

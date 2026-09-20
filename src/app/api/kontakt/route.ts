@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 import { site } from "@/content";
+import { allowEmail, allowGlobal, allowIp, looksLikeSpam, makeToken, sameOrigin, turnstileEnabled, verifyToken, verifyTurnstile } from "@/lib/form-guard";
 
 export const runtime = "nodejs";
 
@@ -16,29 +17,23 @@ const schema = z.object({
   consent: z.literal(true),
   website: z.string().max(0).optional().or(z.literal("")), // honeypot mora biti prazan
   page: z.string().max(200).optional(),
+  token: z.string().max(80).optional(), // potpisani token vremena (GET /api/kontakt)
+  turnstile: z.string().max(4000).optional(),
 });
 
-// Jednostavni rate-limit po IP-u (u memoriji; na Vercelu vrijedi po instanci — dovoljno protiv spama).
-const hits = new Map<string, { n: number; t: number }>();
-const LIMIT = 5;
-const WINDOW = 10 * 60 * 1000;
+const ALLOWED_HOSTS = [new URL(site.url).host, "localhost:3000", "vercel.app"];
 
-function limited(ip: string) {
-  const now = Date.now();
-  const h = hits.get(ip);
-  if (!h || now - h.t > WINDOW) {
-    hits.set(ip, { n: 1, t: now });
-    return false;
-  }
-  h.n += 1;
-  return h.n > LIMIT;
+/** Klijent dohvaća token pri otvaranju forme; bez njega (ili prebrzo) slanje ne prolazi. */
+export function GET() {
+  return NextResponse.json({ token: makeToken(), turnstile: turnstileEnabled }, { headers: { "Cache-Control": "no-store" } });
 }
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] ?? c);
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (limited(ip)) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
+  if (!sameOrigin(req, ALLOWED_HOSTS)) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+  if (!allowIp(ip) || !allowGlobal()) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
 
   let body: unknown;
   try {
@@ -50,8 +45,15 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
   const d = parsed.data;
 
-  // Honeypot popunjen → tiho "uspjeh" (bot ne smije znati).
-  if (d.website) return NextResponse.json({ ok: true });
+  // Botovi: honeypot popunjen, nevažeći/prebrz token ili spam sadržaj → tiho "uspjeh" (bot ne smije znati).
+  const tok = verifyToken(d.token);
+  const spam = looksLikeSpam({ name: d.name, message: d.message, company: d.company });
+  if (d.website || !tok.ok || spam) {
+    console.info("[kontakt] odbijeno:", d.website ? "honeypot" : !tok.ok ? tok.reason : spam, ip);
+    return NextResponse.json({ ok: true });
+  }
+  if (!(await verifyTurnstile(d.turnstile, ip))) return NextResponse.json({ ok: false, error: "captcha" }, { status: 400 });
+  if (!allowEmail(d.email)) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
 
   const to = process.env.CONTACT_TO_EMAIL ?? site.contact.email;
   const from = process.env.CONTACT_FROM_EMAIL ?? `Flomis <onboarding@resend.dev>`;

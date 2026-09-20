@@ -119,7 +119,7 @@ export const contact = {
       "Javi nam se za ponudu za web stranicu, web shop, AI asistenta, hosting ili održavanje. Odgovaramo u roku 24 sata. Flomis, Dunavska 36, Osijek.",
   },
   label: "Kontakt",
-  title: ["Recimo", "što trebaš."],
+  title: ["Reci nam", "što trebaš."],
   lead:
     "Par rečenica o firmi i cilju je dovoljno. Vraćamo se s pitanjima, idejom i okvirnom ponudom u roku 24 sata.",
   info: {
@@ -162,6 +162,7 @@ export const contact = {
       title: "Poruka je poslana.",
       text: "Hvala! Javljamo se u roku 24 sata. Ako je hitno, nazovi nas.",
     },
+    limited: "Poslano je previše upita s ove adrese. Pokušaj kasnije ili nas nazovi.",
     error: {
       title: "Nešto je pošlo po zlu.",
       text: "Poruka nije poslana. Pokušaj ponovno ili nam piši direktno na e-mail.",

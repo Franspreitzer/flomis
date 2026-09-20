@@ -2,15 +2,13 @@ import type { Metadata } from "next";
 import { AiDemo } from "@/components/sections/AiDemo";
 import { BigCta } from "@/components/sections/BigCta";
 import { Faq } from "@/components/sections/Faq";
-import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Hero } from "@/components/sections/Hero";
 import { LatestPosts } from "@/components/sections/LatestPosts";
 import { LocalArea } from "@/components/sections/LocalArea";
 import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
 import { Process } from "@/components/sections/Process";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { Stats } from "@/components/sections/Stats";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { WorkSoon } from "@/components/sections/WorkSoon";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { home } from "@/content";
 import { buildMetadata, faqJsonLd } from "@/lib/seo";
@@ -25,10 +23,8 @@ export default function HomePage() {
       <MarqueeStrip />
       <ServicesGrid />
       <Process />
-      <Stats />
-      <FeaturedWork />
+      <WorkSoon />
       <AiDemo />
-      <Testimonials />
       <Faq label={home.faq.label} title={home.faq.title} items={home.faq.items} />
       <LocalArea />
       <LatestPosts />

@@ -15,7 +15,7 @@ type Props = {
 };
 
 /** FAQ: sticky naslov lijevo, harmonika desno. */
-export function Faq({ label, title, items, num = "07", cta = true, light }: Props) {
+export function Faq({ label, title, items, num = "05", cta = true, light }: Props) {
   return (
     <section className={light ? "theme-light section-y" : "section-y"}>
       <div className="container-x grid gap-10 lg:grid-cols-12">

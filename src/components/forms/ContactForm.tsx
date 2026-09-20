@@ -1,13 +1,13 @@
 "use client";
 
 import { AnimatePresence, m } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { TransitionLink } from "@/components/ui/TransitionLink";
 import { contact } from "@/content";
 import { cn } from "@/lib/utils";
 
-type Status = "idle" | "sending" | "ok" | "error";
+type Status = "idle" | "sending" | "ok" | "error" | "limited";
 type Errors = Partial<Record<"name" | "email" | "message" | "consent", string>>;
 
 const f = contact.form;
@@ -21,6 +21,51 @@ const label =
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const token = useRef<string>("");
+  const [turnstile, setTurnstile] = useState(false);
+  const turnstileToken = useRef<string>("");
+
+  // Potpisani token vremena (anti-spam): forma mora biti otvorena par sekundi prije slanja.
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/kontakt", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d: { token?: string; turnstile?: boolean }) => {
+        if (!alive) return;
+        token.current = d.token ?? "";
+        if (d.turnstile && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) setTurnstile(true);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  // Cloudflare Turnstile (opcionalno — samo ako su ključevi postavljeni).
+  useEffect(() => {
+    if (!turnstile) return;
+    const w = window as unknown as { turnstile?: { render: (el: HTMLElement, o: Record<string, unknown>) => void } };
+    const render = () => {
+      const el = document.getElementById("turnstile-box");
+      if (el && w.turnstile && !el.hasChildNodes()) {
+        w.turnstile.render(el, {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+          theme: "dark",
+          language: "hr",
+          callback: (t: string) => (turnstileToken.current = t),
+          "expired-callback": () => (turnstileToken.current = ""),
+        });
+      }
+    };
+    if (w.turnstile) render();
+    else {
+      const s = document.createElement("script");
+      s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      s.async = true;
+      s.onload = render;
+      document.head.appendChild(s);
+    }
+  }, [turnstile]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,8 +85,12 @@ export function ContactForm() {
       const res = await fetch("/api/kontakt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, consent: true, page: window.location.pathname }),
+        body: JSON.stringify({ ...data, consent: true, page: window.location.pathname, token: token.current, turnstile: turnstileToken.current }),
       });
+      if (res.status === 429) {
+        setStatus("limited");
+        return;
+      }
       if (!res.ok) throw new Error(String(res.status));
       setStatus("ok");
       form.reset();
@@ -151,6 +200,8 @@ export function ContactForm() {
               <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
 
+            {turnstile && <div id="turnstile-box" className="min-h-[65px]" />}
+
             <label className="flex cursor-pointer items-start gap-3 text-sm text-paper-2" data-cursor="link">
               <input type="checkbox" name="consent" className="mt-1 h-4 w-4 shrink-0 accent-accent" aria-invalid={!!errors.consent} />
               <span>
@@ -169,6 +220,11 @@ export function ContactForm() {
               {status === "error" && (
                 <p id="form-error" role="alert" className="text-sm text-red-400">
                   <strong>{f.error.title}</strong> {f.error.text}
+                </p>
+              )}
+              {status === "limited" && (
+                <p id="form-error" role="alert" className="text-sm text-paper-2">
+                  {f.limited}
                 </p>
               )}
             </div>

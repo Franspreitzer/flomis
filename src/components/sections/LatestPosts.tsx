@@ -12,7 +12,7 @@ export function LatestPosts() {
   return (
     <section className="container-x section-y">
       <div className="mb-8 flex items-end justify-between gap-6">
-        <SectionLabel num="09">{blogUi.latest}</SectionLabel>
+        <SectionLabel num="07">{blogUi.latest}</SectionLabel>
         <Button href="/blog" variant="ghost" size="sm">
           {blogUi.allPosts}
         </Button>

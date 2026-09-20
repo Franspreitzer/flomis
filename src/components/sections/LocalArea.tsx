@@ -11,7 +11,7 @@ export function LocalArea() {
     <section className="container-x section-y border-t border-line">
       <div className="grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <SectionLabel num="08" className="mb-5">
+          <SectionLabel num="06" className="mb-5">
             {l.label}
           </SectionLabel>
           <SplitText as="h2" text={l.title} className="text-display-md" />
