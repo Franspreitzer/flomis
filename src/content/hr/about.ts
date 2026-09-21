@@ -176,6 +176,15 @@ export const contact = {
       title: "Nešto je pošlo po zlu.",
       text: "Poruka nije poslana. Pokušaj ponovno ili nam piši direktno na e-mail.",
     },
+    /** Poruke po kodu greške iz /api/kontakt */
+    errorByCode: {
+      send_failed: "Poruka nije poslana — naš servis za e-mail je javio grešku. Pokušaj ponovno za minutu ili nam piši direktno na info@flomis.hr.",
+      not_configured: "Slanje trenutno nije dostupno. Piši nam direktno na info@flomis.hr ili nazovi 097 642 5423.",
+      captcha: "Provjera nije prošla. Osvježi stranicu i pokušaj ponovno.",
+      forbidden: "Zahtjev nije prihvaćen. Osvježi stranicu i pokušaj ponovno.",
+      invalid: "Provjeri unesene podatke i pokušaj ponovno.",
+      network: "Nema veze s poslužiteljem. Provjeri internet i pokušaj ponovno.",
+    },
     errors: {
       name: "Upiši ime.",
       email: "Upiši ispravan e-mail.",

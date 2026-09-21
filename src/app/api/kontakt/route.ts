@@ -21,7 +21,8 @@ const schema = z.object({
   turnstile: z.string().max(4000).optional(),
 });
 
-const ALLOWED_HOSTS = [new URL(site.url).host, "localhost:3000", "vercel.app"];
+const SITE_HOST = new URL(site.url).host;
+const ALLOWED_HOSTS = [SITE_HOST, SITE_HOST.replace(/^www\./, ""), "localhost:3000", "vercel.app"];
 
 /** Klijent dohvaća token pri otvaranju forme; bez njega (ili prebrzo) slanje ne prolazi. */
 export function GET() {
@@ -56,8 +57,10 @@ export async function POST(req: Request) {
   if (!allowEmail(d.email)) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
 
   const to = process.env.CONTACT_TO_EMAIL ?? site.contact.email;
-  const from = process.env.CONTACT_FROM_EMAIL ?? `Flomis <onboarding@resend.dev>`;
+  // `from` MORA biti adresa na domeni verificiranoj u Resendu (flomis.hr). Posjetiteljev e-mail ide u replyTo.
+  const from = process.env.CONTACT_FROM_EMAIL ?? `Flomis <kontakt@${SITE_HOST.replace(/^www\./, "")}>`;
   const key = process.env.RESEND_API_KEY;
+  if (!/@flomis\.hr>?$/i.test(from)) console.warn("[kontakt] CONTACT_FROM_EMAIL nije na verificiranoj domeni flomis.hr:", from);
 
   const subject = `Novi upit: ${d.service || "Opće"} — ${d.name}${d.company ? ` (${d.company})` : ""}`;
   const rows: [string, string][] = [
@@ -80,20 +83,29 @@ export async function POST(req: Request) {
   const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\n${d.message}`;
 
   if (!key) {
-    // Bez API ključa (lokalni razvoj): logiraj i vrati uspjeh da se forma može testirati.
+    // Bez API ključa: u produkciji je to greška konfiguracije (nikad lažni "uspjeh"); lokalno logiraj i pusti.
+    if (process.env.NODE_ENV === "production") {
+      console.error("[kontakt] RESEND_API_KEY nije postavljen u produkciji — upit od", d.email, "NIJE poslan");
+      return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
+    }
     console.info("[kontakt] RESEND_API_KEY nije postavljen — poruka nije poslana:\n" + text);
     return NextResponse.json({ ok: true, dev: true });
   }
 
-  try {
-    const resend = new Resend(key);
-    const { error } = await resend.emails.send({ from, to, replyTo: d.email, subject, html, text });
-    if (error) throw error;
+  const resend = new Resend(key);
 
-    // Automatska potvrda klijentu (ne ruši zahtjev ako ne uspije).
-    const firstName = d.name.split(" ")[0];
-    resend.emails
-      .send({
+  // Glavni mail vlasniku — s jednim ponovnim pokušajem kod privremenih grešaka (5xx / mreža / rate limit).
+  const sent = await sendWithRetry(resend, { from, to, replyTo: d.email, subject, html, text });
+  if (!sent.ok) {
+    console.error("[kontakt] slanje nije uspjelo", { name: sent.error.name, message: sent.error.message, from, to, ip });
+    const status = sent.error.name === "validation_error" || sent.error.name === "missing_required_field" ? 500 : 502;
+    return NextResponse.json({ ok: false, error: "send_failed", detail: sent.error.name }, { status });
+  }
+  console.info("[kontakt] poslano", { id: sent.id, to, service: d.service });
+
+  // Automatska potvrda klijentu — AWAIT je obavezan (serverless bi ubio neawaitani promise nakon odgovora).
+  const firstName = d.name.split(" ")[0];
+  const ack = await sendWithRetry(resend, {
         from,
         to: d.email,
         replyTo: to,
@@ -116,12 +128,31 @@ ${site.url}`,
           <p style="margin-top:20px;padding:14px;background:#f4f4f2;border-radius:8px;white-space:pre-wrap;font-size:14px">${esc(d.message)}</p>
           <p style="color:#77818A;font-size:13px;margin-top:24px">— Flomis · ${site.contact.address.street}, ${site.contact.address.zip} ${site.contact.address.city} · <a href="${site.url}" style="color:#77818A">${site.url.replace(/^https?:\/\//, "")}</a></p>
         </div>`,
-      })
-      .catch((e) => console.warn("[kontakt] auto-reply nije poslan", e));
+  });
+  if (!ack.ok) console.warn("[kontakt] auto-reply nije poslan", { name: ack.error.name, message: ack.error.message, to: d.email });
+  else console.info("[kontakt] auto-reply poslan", { id: ack.id });
 
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("[kontakt] slanje nije uspjelo", err);
-    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+  return NextResponse.json({ ok: true, id: sent.id, ack: ack.ok });
+}
+
+type SendResult = { ok: true; id: string } | { ok: false; error: { name: string; message: string } };
+type Payload = Parameters<Resend["emails"]["send"]>[0];
+
+const RETRYABLE = new Set(["internal_server_error", "application_error", "rate_limit_exceeded", "network_error"]);
+
+/** Pošalji preko Resenda; jedan retry nakon 800 ms za privremene greške. Nikad ne baca — vraća rezultat. */
+async function sendWithRetry(resend: Resend, payload: Payload): Promise<SendResult> {
+  let last: { name: string; message: string } = { name: "unknown", message: "" };
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const { data, error } = await resend.emails.send(payload);
+      if (!error && data?.id) return { ok: true, id: data.id };
+      last = { name: error?.name ?? "unknown", message: error?.message ?? "Nepoznata greška" };
+      if (!RETRYABLE.has(last.name)) break;
+    } catch (e) {
+      last = { name: "network_error", message: e instanceof Error ? e.message : String(e) };
+    }
+    if (attempt === 0) await new Promise((r) => setTimeout(r, 800));
   }
+  return { ok: false, error: last };
 }

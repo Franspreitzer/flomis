@@ -4,7 +4,7 @@ export const site = {
   tagline: "Digitalna agencija iz Osijeka",
   description:
     "Flomis je digitalna agencija iz Osijeka (Osječko-baranjska županija). Izrada web stranica, web shopova i AI asistenata za firme iz Osijeka, Slavonije i Baranje — brzo, po mjeri i s rezultatom.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://flomis.hr",
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.flomis.hr").replace(/\/+$/, ""),
   locale: "hr_HR",
   lang: "hr",
   founded: "2026",

@@ -26,7 +26,7 @@ npm run lint    # ESLint
 
 | Varijabla              | Obavezno | Opis                                                                 |
 | ---------------------- | -------- | -------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | da       | Javni URL stranice bez završne kose crte (npr. `https://flomis.hr`). Koristi se za canonical, OG, sitemap i schema.org. |
+| `NEXT_PUBLIC_SITE_URL` | da       | Javni URL stranice bez završne kose crte (npr. `https://www.flomis.hr`). Koristi se za canonical, OG, sitemap i schema.org. |
 | `RESEND_API_KEY`       | za formu | API ključ s [resend.com](https://resend.com). Bez njega se poruke iz kontakt forme samo logiraju u konzolu (dev mod). |
 | `CONTACT_TO_EMAIL`     | za formu | Adresa na koju stižu upiti (npr. `info@flomis.hr`).                  |
 | `CONTACT_FROM_EMAIL`   | za formu | Pošiljatelj, npr. `Flomis <no-reply@flomis.hr>`. Domena mora biti verificirana u Resendu. |

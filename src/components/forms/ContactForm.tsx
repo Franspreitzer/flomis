@@ -21,6 +21,7 @@ const label =
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const [errorCode, setErrorCode] = useState<string>("send_failed");
   const token = useRef<string>("");
   const [turnstile, setTurnstile] = useState(false);
   const turnstileToken = useRef<string>("");
@@ -87,14 +88,23 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, consent: true, page: window.location.pathname, token: token.current, turnstile: turnstileToken.current }),
       });
+      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; detail?: string };
       if (res.status === 429) {
         setStatus("limited");
         return;
       }
-      if (!res.ok) throw new Error(String(res.status));
+      if (!res.ok || !body.ok) {
+        // Prava greška korisniku (ne lažni "uspjeh"), s razlogom u konzoli za dijagnostiku.
+        console.error("[kontakt] greška", res.status, body.error, body.detail);
+        setErrorCode(body.error ?? "send_failed");
+        setStatus("error");
+        return;
+      }
       setStatus("ok");
       form.reset();
-    } catch {
+    } catch (e) {
+      console.error("[kontakt] mreža", e);
+      setErrorCode("network");
       setStatus("error");
     }
   };
@@ -219,7 +229,7 @@ export function ContactForm() {
               </Button>
               {status === "error" && (
                 <p id="form-error" role="alert" className="text-sm text-red-400">
-                  <strong>{f.error.title}</strong> {f.error.text}
+                  <strong>{f.error.title}</strong> {f.errorByCode[errorCode as keyof typeof f.errorByCode] ?? f.error.text}
                 </p>
               )}
               {status === "limited" && (

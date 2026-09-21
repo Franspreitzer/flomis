@@ -14,7 +14,7 @@ Kartica s kartom, radnim vremenom i recenzijama koja se pojavi kad netko upiše 
 2. **Dodaj tvrtku** → naziv: `Flomis` (točno kako želiš da se prikazuje; bez "j.d.o.o." i bez ključnih riječi u nazivu — Google to kažnjava).
 3. **Kategorija** (primarna): `Agencija za web dizajn` (Website designer). Dodatne: `Tvrtka za razvoj softvera`, `Marketinška agencija`, `Konzultant za internet marketing`.
 4. **Adresa**: Dunavska 36, 31000 Osijek. Označi da **poslužuješ i klijente na njihovoj lokaciji** i dodaj područje: Osijek, Osječko-baranjska županija, Đakovo, Vinkovci, Vukovar, Našice, Beli Manastir, Slavonski Brod.
-5. **Telefon**: 097 642 5423 · **Web**: https://flomis.hr
+5. **Telefon**: 097 642 5423 · **Web**: https://www.flomis.hr
 6. **Verifikacija**: Google nudi razglednicu na adresu (5–14 dana), telefon, e-mail ili video. Odaberi što ponudi; razglednica je najsigurnija. Bez verifikacije profil se ne prikazuje.
 
 ### Popuni sve (Google rangira popunjene profile više)
@@ -38,7 +38,7 @@ Kartica s kartom, radnim vremenom i recenzijama koja se pojavi kad netko upiše 
 ## 2. Google Search Console + Analytics (dan 1 nakon deploya)
 
 1. **https://search.google.com/search-console** → Dodaj svojstvo → *Domena* `flomis.hr` → verificiraj DNS TXT zapisom (Vercel → Domains → DNS, ili kod registrara domene).
-2. **Sitemaps** → pošalji `https://flomis.hr/sitemap.xml`.
+2. **Sitemaps** → pošalji `https://www.flomis.hr/sitemap.xml`.
 3. Nakon 2–3 dana provjeri **Pokrivenost / Indeksiranje** — sve stranice moraju biti "Indeksirano".
 4. Za svaku novu ključnu stranicu (npr. novi blog članak) klikni **Provjera URL-a → Zatraži indeksiranje**.
 5. **Google Analytics 4** (analytics.google.com) → napravi svojstvo → kopiraj Measurement ID (G-XXXX). Skripta se smije učitati **samo nakon privole** — stranica šalje `window` event `flomis:consent` s vrijednošću `"all"`; ubaci GA na taj event (reci mi i ubacim ga u kod).
@@ -54,7 +54,7 @@ Kartica s kartom, radnim vremenom i recenzijama koja se pojavi kad netko upiše 
 
 ## 4. Poslovni imenici i lokalni linkovi (NAP mora biti identičan svugdje)
 
-Koristi **točno isti** oblik: `Flomis` · `Dunavska 36, 31000 Osijek` · `097 642 5423` · `https://flomis.hr` · `info@flomis.hr`.
+Koristi **točno isti** oblik: `Flomis` · `Dunavska 36, 31000 Osijek` · `097 642 5423` · `https://www.flomis.hr` · `info@flomis.hr`.
 
 Besplatni hrvatski imenici (svaki = spominjanje + link):
 - poslovna.hr, fininfo.hr, companywall.hr, bizit.hr, zutestranice.com, tvrtke.com, imenik.hr, poslovniforum.hr
