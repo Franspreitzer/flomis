@@ -34,6 +34,24 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [60, 75, 90],
   },
+  // Stara domena i dalje visi na Vercelu. Kad je dodana na ovaj projekt, sav promet ide na pravi sajt.
+  async redirects() {
+    const shopHosts = ["flomis.shop", "www.flomis.shop"];
+    return shopHosts.flatMap((host) => [
+      {
+        source: "/",
+        has: [{ type: "host" as const, value: host }],
+        destination: "https://www.flomis.hr",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        destination: "https://www.flomis.hr/:path*",
+        permanent: true,
+      },
+    ]);
+  },
   headers: async () => [
     {
       source: "/(.*)",

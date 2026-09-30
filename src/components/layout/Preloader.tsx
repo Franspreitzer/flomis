@@ -55,15 +55,15 @@ export function Preloader() {
     });
     tl.to(obj, {
       n: 100,
-      duration: 1.1,
+      duration: 0.55,
       ease: "power3.inOut",
       onUpdate: () => {
         if (numRef.current) numRef.current.textContent = String(Math.round(obj.n)).padStart(3, "0");
       },
     })
-      .to(openRef.current, { x: -34, duration: 0.6, ease: "expo.inOut" }, "-=0.15")
-      .to(closeRef.current, { x: 34, duration: 0.6, ease: "expo.inOut" }, "<")
-      .to(numRef.current, { opacity: 0, duration: 0.25 }, "<");
+      .to(openRef.current, { x: -34, duration: 0.35, ease: "expo.inOut" }, "-=0.1")
+      .to(closeRef.current, { x: 34, duration: 0.35, ease: "expo.inOut" }, "<")
+      .to(numRef.current, { opacity: 0, duration: 0.2 }, "<");
     return () => {
       tl.kill();
     };
@@ -80,7 +80,7 @@ export function Preloader() {
         <m.div
           key="preloader"
           className="fixed inset-0 z-[300] flex items-center justify-center bg-ink text-paper"
-          exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.87, 0, 0.13, 1] } }}
+          exit={{ y: "-100%", transition: { duration: 0.5, ease: [0.87, 0, 0.13, 1] } }}
           aria-live="polite"
           aria-label={ui.preloader.loading}
         >
@@ -108,7 +108,7 @@ export function Preloader() {
             <m.div
               className="h-full origin-left bg-accent"
               initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1, transition: { duration: 1.1, ease: [0.65, 0, 0.35, 1] } }}
+              animate={{ scaleX: 1, transition: { duration: 0.55, ease: [0.65, 0, 0.35, 1] } }}
             />
           </div>
           <p className="text-label absolute bottom-6 left-[var(--gutter)] text-paper-3">Flomis</p>

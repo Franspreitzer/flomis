@@ -55,7 +55,7 @@ export function localBusinessJsonLd() {
     "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
     "@id": ORG_ID,
     name: site.name,
-    alternateName: "Flomis Osijek",
+    alternateName: ["Flomis Osijek", "FLOMIS", "flomis.hr", "www.flomis.hr"],
     legalName: site.legalName,
     url: site.url,
     logo: { "@type": "ImageObject", url: `${site.url}/logo/logo-dark.svg` },
@@ -129,6 +129,7 @@ export function webSiteJsonLd() {
     "@id": SITE_ID,
     url: site.url,
     name: site.name,
+    alternateName: ["FLOMIS", "Flomis Osijek", "www.flomis.hr"],
     inLanguage: "hr",
     publisher: { "@id": ORG_ID },
   };

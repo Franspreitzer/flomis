@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, Float, Lightformer } from "@react-three/drei";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
@@ -12,6 +12,19 @@ import * as THREE from "three";
  */
 
 const ACCENT = "#C9D600";
+
+/** Lagano lebdenje — zamjena za drei <Float>, bez dodatne ovisnosti. */
+function Float({ children, speed = 1, intensity = 1, seed = 0 }: { children: React.ReactNode; speed?: number; intensity?: number; seed?: number }) {
+  const ref = useRef<THREE.Group>(null);
+  useFrame(({ clock }) => {
+    const g = ref.current;
+    if (!g) return;
+    const t = clock.elapsedTime * speed + seed;
+    g.position.y = Math.sin(t) * 0.12 * intensity;
+    g.rotation.z = Math.sin(t * 0.6) * 0.03 * intensity;
+  });
+  return <group ref={ref}>{children}</group>;
+}
 
 function Paren({ side }: { side: -1 | 1 }) {
   const ref = useRef<THREE.Mesh>(null);
@@ -54,7 +67,7 @@ function Dots() {
   return (
     <>
       {pts.map((p, i) => (
-        <Float key={i} speed={1.2 + i * 0.2} rotationIntensity={0} floatIntensity={1.4}>
+        <Float key={i} speed={1.2 + i * 0.2} intensity={1.4} seed={i}>
           <mesh position={p}>
             <sphereGeometry args={[0.07 + (i % 3) * 0.03, 16, 16]} />
             <meshStandardMaterial color="#a9b2ba" metalness={0.6} roughness={0.35} />
@@ -86,6 +99,43 @@ function Rig({ children }: { children: React.ReactNode }) {
     grp.position.y = Math.sin(t * 0.6) * 0.12;
   });
   return <group ref={g}>{children}</group>;
+}
+
+/**
+ * Jeftin "studio" environment: mali gradijentni canvas kao envMap scene.
+ * Zamjena za drei <Environment> (koji renderira cijelu scenu u cubemap svaki mount).
+ */
+function StudioEnv() {
+  const gl = useThree((s) => s.gl);
+  const getScene = useThree((s) => s.get);
+  useEffect(() => {
+    const scene = getScene().scene;
+    const c = document.createElement("canvas");
+    c.width = 16;
+    c.height = 64;
+    const ctx = c.getContext("2d");
+    if (!ctx) return;
+    const grad = ctx.createLinearGradient(0, 0, 0, 64);
+    grad.addColorStop(0, "#ffffff");
+    grad.addColorStop(0.45, "#8f99a3");
+    grad.addColorStop(0.7, "#2a3448");
+    grad.addColorStop(1, "#101827");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 16, 64);
+    const tex = new THREE.CanvasTexture(c);
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.colorSpace = THREE.SRGBColorSpace;
+    const pmrem = new THREE.PMREMGenerator(gl);
+    const env = pmrem.fromEquirectangular(tex).texture;
+    scene.environment = env;
+    tex.dispose();
+    pmrem.dispose();
+    return () => {
+      scene.environment = null;
+      env.dispose();
+    };
+  }, [getScene, gl]);
+  return null;
 }
 
 /** Pauza render loopa kad canvas nije u viewportu (štedi bateriju i CPU). */
@@ -127,15 +177,9 @@ export default function HeroScene() {
         <ambientLight intensity={0.25} />
         <directionalLight position={[4, 6, 5]} intensity={2.2} />
         <pointLight position={[-5, -3, 3]} intensity={6} color={ACCENT} distance={14} />
-        <Environment resolution={128}>
-          <group rotation={[-Math.PI / 3, 0, 0]}>
-            <Lightformer intensity={4} position={[0, 5, -9]} scale={[10, 6, 1]} color="#F5F5F2" />
-            <Lightformer intensity={0.7} position={[-6, 2, 6]} scale={[4, 8, 1]} color={ACCENT} />
-            <Lightformer intensity={0.9} position={[7, -3, 4]} scale={[6, 3, 1]} color="#a9b2ba" />
-          </group>
-        </Environment>
+        <StudioEnv />
         <Rig>
-          <Float speed={1} rotationIntensity={0.15} floatIntensity={0.4}>
+          <Float speed={1} intensity={0.5}>
             <Paren side={-1} />
             <Paren side={1} />
           </Float>

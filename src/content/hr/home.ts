@@ -1,11 +1,11 @@
 export const home = {
   meta: {
-    title: "Izrada web stranica Osijek — web shopovi i AI asistenti | Flomis",
+    title: "Flomis | Izrada web stranica Osijek — web shopovi i AI asistenti",
     description:
       "Flomis je digitalna agencija iz Osijeka. Izrada web stranica od 500 €, web shopova od 1.000 € i AI asistenata od 200 € za firme iz Osijeka, Osječko-baranjske županije i cijele Slavonije. Ponuda u 24 h.",
   },
   hero: {
-    eyebrow: "Digitalna agencija · Osijek, Slavonija i Baranja",
+    eyebrow: "Flomis · digitalna agencija · Osijek, Slavonija i Baranja",
     // Svaka stavka je jedan redak naslova (animirano riječ po riječ)
     title: ["Web koji", "radi za", "Vas."],
     accentWord: "radi",

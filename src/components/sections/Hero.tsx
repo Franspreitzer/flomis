@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { useAppState } from "@/components/layout/AppState";
 import { Parens } from "@/components/brand/Parens";
 import { Button } from "@/components/ui/Button";
@@ -13,12 +14,31 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: f
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+/** 3D se učitava tek kad je glavna dretva slobodna i uređaj dovoljno jak — da ne diže TBT. */
+function useDefer3D(enabled: boolean) {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    if (!enabled) return;
+    const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean; effectiveType?: string } };
+    const weak =
+      (nav.hardwareConcurrency ?? 8) <= 4 ||
+      (nav.deviceMemory ?? 8) <= 4 ||
+      nav.connection?.saveData === true ||
+      /2g|slow-2g|3g/.test(nav.connection?.effectiveType ?? "");
+    if (weak) return;
+    const idle = window.requestIdleCallback ?? ((cb: IdleRequestCallback) => window.setTimeout(() => cb({ didTimeout: false, timeRemaining: () => 0 }), 1200));
+    const id = idle(() => setOn(true), { timeout: 2500 });
+    return () => window.cancelIdleCallback?.(id as number);
+  }, [enabled]);
+  return on;
+}
+
 export function Hero() {
   const { ready, intro } = useAppState();
   const h = home.hero;
   const wide = useMedia("(min-width: 700px)");
   const reduced = usePrefersReducedMotion();
-  const show3d = wide && !reduced;
+  const show3d = useDefer3D(wide && !reduced);
 
   // SSR renderira sve vidljivo (LCP). Intro se odigra samo nakon preloadera;
   // dok preloader pokriva ekran elementi se trenutno sakriju, pa ulaze animirano.
@@ -34,7 +54,7 @@ export function Hero() {
         <HeroScene />
       ) : (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-          <Parens className="w-[85vw] max-w-[520px] text-paper/[0.07] motion-safe:animate-drift" gap={4} />
+          <Parens className="w-[85vw] max-w-[520px] text-paper/[0.07] motion-safe:animate-drift" gap={4} strokeWidth={4} />
         </div>
       )}
 

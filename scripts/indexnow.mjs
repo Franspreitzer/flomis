@@ -1,7 +1,19 @@
 // Šalje sve URL-ove iz sitemapa na IndexNow (Bing, Yandex, Seznam, Naver — trenutno indeksiranje).
 // Google ne podržava IndexNow: za Google koristi Search Console → "Zatraži indeksiranje" ili pošalji sitemap.
 // Pokreni NAKON deploya:  npm run seo:ping
-const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.flomis.hr").replace(/\/+$/, "");
+function canonicalOrigin() {
+  const fallback = "https://www.flomis.hr";
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL || fallback).trim().replace(/\/+$/, "");
+  try {
+    const u = new URL(raw.includes("://") ? raw : `https://${raw}`);
+    if (u.hostname === "flomis.hr") u.hostname = "www.flomis.hr";
+    return u.origin;
+  } catch {
+    return fallback;
+  }
+}
+
+const SITE = canonicalOrigin();
 const KEY = "f6aceda3af7ec9ae835370dd046edfc9";
 const res = await fetch(`${SITE}/sitemap.xml`);
 if (!res.ok) throw new Error("Sitemap nije dostupan: " + res.status);

@@ -1,10 +1,26 @@
+/**
+ * Javni origin. Vercel šalje apex (flomis.hr) 308 na www. Ako canonical, sitemap
+ * i schema pokazuju na URL koji se preusmjerava, Google vidi petlju i stranicu ne indeksira.
+ */
+function canonicalOrigin() {
+  const fallback = "https://www.flomis.hr";
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL ?? fallback).trim().replace(/\/+$/, "");
+  try {
+    const u = new URL(raw.includes("://") ? raw : `https://${raw}`);
+    if (u.hostname === "flomis.hr") u.hostname = "www.flomis.hr";
+    return u.origin;
+  } catch {
+    return fallback;
+  }
+}
+
 export const site = {
   name: "Flomis",
   legalName: "FLOMIS j.d.o.o. za informatičke usluge",
   tagline: "Digitalna agencija iz Osijeka",
   description:
     "Flomis je digitalna agencija iz Osijeka (Osječko-baranjska županija). Izrada web stranica, web shopova i AI asistenata za firme iz Osijeka, Slavonije i Baranje — brzo, po mjeri i s rezultatom.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.flomis.hr").replace(/\/+$/, ""),
+  url: canonicalOrigin(),
   locale: "hr_HR",
   lang: "hr",
   founded: "2026",
