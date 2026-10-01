@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BigCta } from "@/components/sections/BigCta";
 import { Faq } from "@/components/sections/Faq";
 import { PageHero } from "@/components/sections/PageHero";
+import { PostCard } from "@/components/sections/PostCard";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
@@ -10,7 +11,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { TransitionLink } from "@/components/ui/TransitionLink";
-import { getService, serviceLabels, services, ui } from "@/content";
+import { blogUi, getService, serviceLabels, services, ui } from "@/content";
+import { getPost } from "@/lib/blog";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -33,6 +35,7 @@ export default async function ServicePage({ params }: Params) {
   const s = getService(slug);
   if (!s) notFound();
   const others = services.filter((o) => o.slug !== s.slug);
+  const reads = (s.reads ?? []).map((slug) => getPost(slug)).filter((p) => p !== null);
 
   return (
     <>
@@ -174,6 +177,21 @@ export default async function ServicePage({ params }: Params) {
           ))}
         </Reveal>
       </section>
+
+      {reads.length > 0 && (
+        <section className="container-x pb-[var(--section-y)]">
+          <SectionLabel num="06" className="mb-8">
+            {blogUi.latest}
+          </SectionLabel>
+          <Reveal stagger="[data-reveal-item]" className="grid gap-4 md:grid-cols-3">
+            {reads.map((p) => (
+              <div key={p.slug} data-reveal-item>
+                <PostCard post={p} />
+              </div>
+            ))}
+          </Reveal>
+        </section>
+      )}
 
       <BigCta title={[s.cta.title]} text={s.cta.text} />
     </>

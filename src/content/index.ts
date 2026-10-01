@@ -11,6 +11,8 @@ export * from "./hr/about";
 export * from "./hr/legal";
 export * from "./hr/local";
 export * from "./hr/cities";
+export * from "./hr/press";
+export * from "./hr/updated";
 
 export const locales = ["hr"] as const;
 export type Locale = (typeof locales)[number];

@@ -114,6 +114,36 @@ export const about = {
       "GSAP",
     ],
   },
+  faq: {
+    label: "FAQ",
+    title: "Pitanja o nama.",
+    items: [
+      {
+        q: "Što je Flomis?",
+        a: "Flomis je digitalna agencija iz Osijeka koja radi web stranice, web shopove i AI asistente za firme iz Hrvatske. Puni naziv je FLOMIS j.d.o.o. za informatičke usluge, OIB 39781208205, sa sjedištem u Dunavskoj 36 u Osijeku. Web stranice kreću od 500 €, web shopovi od 1.000 €, a AI asistenti od 200 €.",
+      },
+      {
+        q: "Gdje se Flomis nalazi?",
+        a: "Sjedište je u Dunavskoj 36 u Osijeku, u Osječko-baranjskoj županiji. Radimo s klijentima iz cijele Hrvatske — Osijek, Zagreb, Đakovo, Vinkovci, Vukovar, Slavonski Brod i dalje. Sastanak može biti uživo u Osijeku ili online, kako tebi odgovara.",
+      },
+      {
+        q: "Od kada Flomis postoji?",
+        a: "Firma je osnovana 2026. godine u Osijeku. Mlada smo agencija i ne pravimo se da nismo — zato prvi klijenti dobivaju cijene i količinu pažnje koje se kasnije neće ponoviti. Prvi javni projekti su web stranice za Wellar wellness centar u Osijeku i LFIT Productions iz Zagreba.",
+      },
+      {
+        q: "Radim li s agencijom ili s jednim čovjekom?",
+        a: "Radiš s malim timom u kojem na projektu uvijek postoji jedna osoba koja ti je kontakt od prvog razgovora do lansiranja. Namjerno držimo mali broj projekata istovremeno, pa nema predavanja posla između pet ljudi ni čekanja u redu. Praktično to znači da na mail ili na 097 642 5423 odgovara netko tko zna tvoj projekt napamet.",
+      },
+      {
+        q: "Zašto agencija iz Osijeka, a ne iz Zagreba?",
+        a: "Zato što za isti novac dobiješ više rada, a za hitnu stvar možeš doći na kavu umjesto da zakazuješ poziv. Osijek je i prednost za lokalni SEO: znamo kako ljudi ovdje pretražuju i što im je u rezultatima konkurencija. Za klijente iz Zagreba i ostatka Hrvatske sve ionako ide online, kao i kod svake druge agencije.",
+      },
+      {
+        q: "Što Flomis ne radi?",
+        a: "Ne radimo tiskane materijale, video produkciju ni vođenje društvenih mreža, i ne prodajemo pakete oglašavanja. Držimo se web stranica, web shopova, AI asistenata, hostinga i održavanja, jer je bolje raditi pet stvari dobro nego petnaest osrednje. Kad ti zatreba fotograf ili tiskara u Osijeku, preporučimo nekoga s kim smo već radili.",
+      },
+    ],
+  },
   cta: {
     title: "Budi jedna od prvih deset.",
     text: "Firme koje s nama krenu ove godine dobivaju najviše pažnje koju ćemo ikad moći dati. Javi se.",

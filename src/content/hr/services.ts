@@ -21,6 +21,8 @@ export type Service = {
   faq: { q: string; a: string }[];
   priceFrom: string;
   cta: { title: string; text: string };
+  /** Slugovi blog članaka koji dublje objašnjavaju ovu uslugu (interno povezivanje). */
+  reads?: string[];
 };
 
 export const servicesIntro = {
@@ -113,8 +115,37 @@ export const services: Service[] = [
         q: "Radite li redizajn postojećih stranica?",
         a: "Da. Analiziramo što radi, što ne, i predlažemo redizajn koji zadržava dobre stvari, a popravlja loše.",
       },
+      {
+        q: "Treba li mojoj maloj firmi web stranica ako već imam Facebook i Instagram?",
+        a: "Treba, jer društvene mreže ne izlaze u Google pretrazi, a stranica izlazi. Kad netko u Osijeku upiše „vodoinstalater“ ili „knjigovodstvo“, Google nudi web stranice, a ne Instagram profile. Profil je k tome tuđi teren — algoritam i pravila se mijenjaju preko noći, a stranica je tvoja imovina koju nitko ne može ugasiti.",
+      },
+      {
+        q: "Što moram pripremiti prije nego krenemo?",
+        a: "Dovoljan je popis usluga, logo ako ga imaš i par rečenica o tome tko su ti kupci. Tekstove i strukturu pišemo mi na temelju razgovora od sat vremena, a ako nemaš fotografije, predlažemo fotografa u Osijeku ili kvalitetne stock fotke. Nije ti potrebno ništa tehničko — domenu, hosting i mail sređujemo mi.",
+      },
+      {
+        q: "Kad će se stranica pojaviti na Googleu?",
+        a: "U Google indeks ulazi obično za 3 do 14 dana nakon lansiranja, jer je sami prijavimo kroz Search Console. Za ime tvoje firme bit ćeš prvi rezultat brzo; za konkurentne pojmove poput „izrada web stranica Osijek“ treba 3 do 6 mjeseci rada na sadržaju i Google Business Profilu. Postavljanje Search Consolea i Google Business Profila uključeno je u izradu.",
+      },
+      {
+        q: "Može li stranica biti na hrvatskom i engleskom?",
+        a: "Može, i to radimo redovito — za Wellar wellness centar u Osijeku napravili smo kompletnu hrvatsku i englesku verziju. Druga verzija obično poskupi projekt 20 do 30 posto, jer svaki tekst, naslov i SEO opis postoji dvaput. Prijevod možeš dati ti ili ga organiziramo mi.",
+      },
+      {
+        q: "Mogu li platiti u ratama?",
+        a: "Da — standardno je 40 posto avansa i 60 posto po lansiranju, a za projekte iznad 1.500 € dijelimo plaćanje u tri ili četiri faze vezane uz isporuke. Hosting i održavanje plaćaju se posebno, mjesečno ili godišnje. Cijena iz ponude je fiksna i ne mijenja se usput.",
+      },
+      {
+        q: "WordPress ili Next.js — što je bolje za mene?",
+        a: "Za većinu firmi iz Hrvatske koje žele brzu stranicu i mir biramo Next.js, jer nema dodataka koji se kvare ni sigurnosnih zakrpa svaki mjesec. WordPress ima smisla kad objavljuješ puno sadržaja i želiš potpunu slobodu u uređivanju. Preporuku dajemo nakon razgovora, a ne po navici.",
+      },
+      {
+        q: "Mogu li sam mijenjati tekstove i slike nakon lansiranja?",
+        a: "Možeš — svaku stranicu predajemo s uređivačkim sučeljem i kratkim video uputama na hrvatskom. Ako ti se ne da, izmjene su uključene u paket održavanja od 39 €/mj i obično ih napravimo isti ili sljedeći radni dan.",
+      },
     ],
     priceFrom: "500 €",
+    reads: ["kako-odabrati-web-agenciju-osijek", "sablona-po-mjeri-ili-agencija", "koliko-kosta-izrada-web-stranice-osijek"],
     cta: {
       title: "Trebaš stranicu koja radi?",
       text: "Pošalji nam link na trenutnu stranicu (ako je imaš) i par rečenica o firmi. Vraćamo se s prijedlogom u 24h.",
@@ -185,8 +216,37 @@ export const services: Service[] = [
         q: "Što s fiskalizacijom i R1 računima?",
         a: "Povezujemo shop s računovodstvenim ili fiskalnim sustavom koji koristiš, ili preporučimo rješenje.",
       },
+      {
+        q: "Koliko proizvoda može imati moj shop?",
+        a: "Tehnički nema gornje granice — radili smo i shopove s nekoliko tisuća artikala. Na cijenu utječe broj varijanti i način unosa: do stotinjak proizvoda unosimo ručno i to je uključeno, a veće kataloge uvozimo iz Excela ili ERP-a. Shop od 1.000 € pokriva postav, dizajn i prvih 20-ak proizvoda.",
+      },
+      {
+        q: "Mogu li kupci plaćati karticom i pouzećem?",
+        a: "Mogu oboje, plus virmanom i uplatnicom. Za kartice povezujemo Stripe, Monri ili WSPay, ovisno o tome što ti banka nudi i koliko transakcija očekuješ. Pouzeće i preuzimanje u trgovini postavljamo besplatno jer su samo opcija dostave.",
+      },
+      {
+        q: "Povezuje li se shop s programom u kojem vodim fakture i zalihe?",
+        a: "Povezuje se sa svime što ima API ili izvoz podataka — Minimax, Pantheon, Luceed i slični sustavi su rutina. Narudžbe tada same ulaze u tvoj program, a stanje zaliha se vraća u shop, pa ne prodaješ ono čega nema. Ako tvoj program nema vezu, dogovorimo redovni izvoz u datoteku.",
+      },
+      {
+        q: "Mogu li prodavati i u inozemstvo?",
+        a: "Možeš — postavljamo više valuta, dostavne zone i porezne stope po zemljama. Najčešće krenemo s Hrvatskom i susjednim zemljama, pa po potrebi dodamo EU. Englesku verziju shopa radimo istom logikom kao i dvojezične stranice.",
+      },
+      {
+        q: "Možete li preseliti moj postojeći shop na novu platformu?",
+        a: "Možemo, i to je čest posao: prenosimo proizvode, kategorije, slike, kupce i narudžbe, a stare adrese preusmjeravamo na nove da ne izgubiš Google pozicije. Migracija traje obično tjedan dana više od same izrade. Prije svega napravimo pregled i kažemo ti što se može prenijeti, a što ne.",
+      },
+      {
+        q: "Tko slika proizvode i piše opise?",
+        a: "Opise pišemo mi, a fotografije su na tebi — ili ih organiziramo s fotografom u Osijeku. Dobre fotografije su najveća razlika između shopa koji prodaje i shopa koji samo stoji, pa ne preporučujemo štednju na tom dijelu. Za prvih nekoliko proizvoda napišemo opise kao predložak po kojem dalje ideš sam.",
+      },
+      {
+        q: "Povezujete li dostavne službe?",
+        a: "Povezujemo Hrvatsku poštu, Overseas, GLS i DPD, ovisno o tome s kim imaš ugovor. Kupac vidi cijenu dostave u košarici, a ti dobiješ narudžbu spremnu za paket. Paketomate i preuzimanje u trgovini postavljamo kao dodatne opcije.",
+      },
     ],
     priceFrom: "1.000 €",
+    reads: ["web-shop-hrvatska-vodic", "sablona-po-mjeri-ili-agencija", "koliko-kosta-izrada-web-stranice-osijek"],
     cta: {
       title: "Spreman za online prodaju?",
       text: "Reci nam što prodaješ i kome. Predložimo platformu, cijenu i rok u 24h.",
@@ -257,8 +317,37 @@ export const services: Service[] = [
         q: "Koliko košta mjesečno?",
         a: "Ovisi o broju razgovora i kanalima. Postavljanje od 200 €, a mjesečno od 39 €, uključujući AI troškove, održavanje i poboljšanja.",
       },
+      {
+        q: "Govori li asistent hrvatski?",
+        a: "Govori hrvatski prirodno, uključujući padeže i uobičajene skraćenice koje ljudi tipkaju. Ton podešavamo tvom brendu — može biti službeni ili opušten na „ti“. Ako ti se javi stranac, prebaci se na engleski sam.",
+      },
+      {
+        q: "Odakle asistent zna podatke o mojoj firmi?",
+        a: "Hranimo ga tvojim materijalima: web stranicom, cjenikom, često postavljanim pitanjima, radnim vremenom i dokumentima koje nam pošalješ. Sve to postaje baza znanja iz koje smije odgovarati, i ničega izvan nje. Kad promijeniš cijene, javiš nam ili sam ažuriraš bazu — promjena je vidljiva odmah.",
+      },
+      {
+        q: "Može li asistent zakazivati termine?",
+        a: "Može se povezati s kalendarom ili sustavom rezervacija pa predlaže slobodne termine i potvrđuje ih mailom. Za Wellar wellness centar rezervacije idu kroz Zoyyu, a asistent gosta vodi do pravog termina. Jednostavnija varijanta je da prikupi podatke i pošalje ti ih na mail.",
+      },
+      {
+        q: "Radi li asistent na Messengeru i WhatsAppu?",
+        a: "Radi — isti asistent može biti na web stranici, Messengeru, Instagram porukama i WhatsAppu, s istom bazom znanja. Svaki dodatni kanal je sitna doplata na postav, jer treba vlastitu integraciju i testiranje. Najviše upita obično ipak dolazi s web stranice.",
+      },
+      {
+        q: "Koliko traje postavljanje asistenta?",
+        a: "Od prvog razgovora do asistenta uživo prođe obično 1 do 2 tjedna. Prvi tjedan ide na skupljanje materijala i izgradnju baze znanja, drugi na testne razgovore u kojima ti sam pokušavaš pronaći rupe. Ako već imaš uredan cjenik i FAQ, ide i brže.",
+      },
+      {
+        q: "Zamjenjuje li asistent zaposlenika?",
+        a: "Ne zamjenjuje, nego skida s njega ponavljajuća pitanja — radno vrijeme, cijene, dostupnost, kako doći. Ozbiljne upite prosljeđuje čovjeku s cijelim kontekstom razgovora, pa se nazove ili odgovori već upućen. Najveća korist su večeri i vikendi, kad nitko ne bi ionako odgovorio.",
+      },
+      {
+        q: "Mogu li vidjeti što ljudi pitaju asistenta?",
+        a: "Dobivaš pregled svih razgovora i popis pitanja na koja asistent nije znao odgovoriti. To je usput i najbolje istraživanje tržišta koje ćeš dobiti besplatno — vidiš što kupce stvarno muči. Na temelju toga svaki mjesec dopunjavamo bazu znanja, što je uključeno u mjesečnu cijenu.",
+      },
     ],
     priceFrom: "200 €",
+    reads: ["ai-asistent-za-male-firme", "kako-odabrati-web-agenciju-osijek"],
     cta: {
       title: "Želiš vidjeti asistenta na svojim podacima?",
       text: "Pošalji nam link na stranicu i 5 najčešćih pitanja koja dobivaš. Napravimo demo za tebe.",
@@ -328,8 +417,37 @@ export const services: Service[] = [
         q: "Koliko košta hosting?",
         a: "Od 90 €/god, ovisno o vrsti stranice i prometu. Domena .hr od 15 €/god.",
       },
+      {
+        q: "Kako prenijeti domenu koju već imam kod drugog registrara?",
+        a: "Prijenos radimo mi: zatražiš autorizacijski kod kod trenutnog registrara, pošalješ nam ga i ostalo je naš posao. Stranica i mail rade bez prekida jer prvo prebacimo postavke, a tek onda domenu. Cijeli postupak traje do 5 radnih dana, najviše zbog čekanja registra.",
+      },
+      {
+        q: "Gdje se nalaze serveri?",
+        a: "Serveri su u Europskoj uniji, najčešće u Frankfurtu, što znači da su podaci pod GDPR-om i da je stranica brza za posjetitelje iz Hrvatske. Za projekte koji ciljaju samo domaće tržište koristimo i hrvatske podatkovne centre. Ni u jednom slučaju podaci ne izlaze iz EU.",
+      },
+      {
+        q: "Što ako stranica padne u nedjelju navečer?",
+        a: "Nadzor provjerava stranicu svakih nekoliko minuta i javi nam prije nego ti primijetiš. Za sve u našem hostingu reagiramo i izvan radnog vremena, jer je ispad stranice jedina stvar koju ne ostavljamo za ponedjeljak. U praksi se najčešće radi o sitnici koja se riješi u desetak minuta.",
+      },
+      {
+        q: "Dobivam li e-mail adresu na svojoj domeni?",
+        a: "Dobivaš — postavljamo adrese tipa info@tvojafirma.hr, s poštanskim sandučićima ili preusmjeravanjem na Gmail koji već koristiš. Postavljamo i SPF, DKIM i DMARC zapise, bez kojih mailovi s vlastite domene završavaju u spamu. To je uključeno u hosting.",
+      },
+      {
+        q: "Što ako jednog dana želim otići drugom hosteru?",
+        a: "Odeš, bez pregovaranja i bez naknade. Domena je registrirana na tvoju firmu, a mi ti predajemo kompletan izvoz stranice, baze i mailova. Isto tako preuzimamo stranice od drugih hostera, pa znamo koliko je neugodno kad se netko oko toga pravi važan.",
+      },
+      {
+        q: "Je li SSL certifikat uključen?",
+        a: "Uključen je i obnavlja se automatski, pa stranica nikad ne pokazuje upozorenje „Nije sigurno“. Bez njega Google rangira stranicu lošije, a kupci odustaju od plaćanja. Za web shopove postavljamo i dodatna sigurnosna zaglavlja.",
+      },
+      {
+        q: "Radite li backup i koliko dugo ga čuvate?",
+        a: "Backup se radi svaki dan i čuvamo ga 30 dana unatrag, na zasebnoj lokaciji od samog servera. Vraćanje na raniju verziju traje obično manje od sat vremena. Prije svake veće izmjene napravimo i dodatnu kopiju.",
+      },
     ],
     priceFrom: "90 €/god",
+    reads: ["kako-odabrati-web-agenciju-osijek", "lokalni-seo-osijek-vodic"],
     cta: {
       title: "Trebaš domenu ili hosting?",
       text: "Reci nam koje ime želiš ili gdje ti je stranica sad. Sredimo sve u jedan dan.",
@@ -399,8 +517,37 @@ export const services: Service[] = [
         q: "Postoji li ugovorna obveza?",
         a: "Ne. Mjesečno, otkaz bilo kad. Ostaješ jer ti se isplati, ne jer moraš.",
       },
+      {
+        q: "Što točno dobivam za 39 € mjesečno?",
+        a: "Dobivaš hosting, SSL, dnevne backupe, sigurnosne nadogradnje, nadzor dostupnosti i jedan sat izmjena sadržaja mjesečno. To pokriva prezentacijsku stranicu; web shopovi i stranice s puno prometa idu u viši paket. Sve je na jednom računu, bez naknadnih stavki.",
+      },
+      {
+        q: "Koliko izmjena mjesečno je uključeno?",
+        a: "U osnovnom paketu je jedan sat mjesečno, što je obično 3 do 5 manjih izmjena — nova cijena, nova fotografija, novi tekst na stranici. Veći paketi imaju 3 ili 8 sati. Ako jednom zatreba više, dodatni sat naplaćujemo po dogovorenoj cijeni, bez skakanja u viši paket.",
+      },
+      {
+        q: "Što ako mi netko hakira stranicu?",
+        a: "Stranicu vraćamo iz backupa, zatvaramo rupu kroz koju se ušlo i čistimo zloćudni kod — za klijente na održavanju bez dodatne naplate. Zato i inzistiramo na redovitim nadogradnjama: gotovo svaki upad u Hrvatskoj ide preko zastarjelog dodatka, a ne preko nekog genija. Sanacija hakirane stranice koja nije na održavanju naplaćuje se po satu.",
+      },
+      {
+        q: "Je li održavanje obavezno uz izradu stranice?",
+        a: "Nije obavezno i stranicu ti predajemo u cijelosti bez obzira odlučiš li se za njega. Preporučujemo ga jer stranica bez nadogradnji nakon godinu dana postaje sigurnosni rizik, a bez backupa je jedan loš dan dovoljan da sve nestane. Možeš ga uključiti i kasnije, nakon pregleda stanja.",
+      },
+      {
+        q: "Koliko brzo reagirate kad nešto hitno zapne?",
+        a: "Na hitne stvari — stranica ne radi, shop ne prima narudžbe — reagiramo isti dan, uključujući vikend. Obične izmjene rješavamo u roku od 1 do 2 radna dana. Javljaš se mailom ili na 097 642 5423, bez tiketa i čekanja u redu.",
+      },
+      {
+        q: "Što se događa s backupima ako prekinem suradnju?",
+        a: "Pri raskidu dobivaš kompletan izvoz stranice, baze i zadnjeg backupa, u formatu koji novi hoster može preuzeti. Kopije kod nas brišemo 30 dana nakon prekida. Nema otkaznog roka ni zadržavanja podataka kao poluge.",
+      },
+      {
+        q: "Pratite li kako stranica stoji na Googleu?",
+        a: "U većim paketima dobivaš kratki mjesečni pregled: koliko je ljudi došlo, s kojih upita i što se promijenilo. Nije riječ o izvještaju od trideset stranica nego o nekoliko brojki i jednoj preporuci što napraviti sljedeće. Search Console i analitiku postavljamo svima, pa podacima možeš pristupiti i sam.",
+      },
     ],
     priceFrom: "39 €/mj",
+    reads: ["kako-odabrati-web-agenciju-osijek", "sablona-po-mjeri-ili-agencija"],
     cta: {
       title: "Želiš da se netko brine o stranici?",
       text: "Pošalji nam link. Napravimo besplatan pregled stanja i predložimo paket.",

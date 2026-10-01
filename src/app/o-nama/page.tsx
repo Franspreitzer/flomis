@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
 import { Parens } from "@/components/brand/Parens";
 import { BigCta } from "@/components/sections/BigCta";
+import { Faq } from "@/components/sections/Faq";
 import { PageHero } from "@/components/sections/PageHero";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Marquee } from "@/components/ui/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
-import { about, site } from "@/content";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { TransitionLink } from "@/components/ui/TransitionLink";
+import { about, lastUpdated, site } from "@/content";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ ...about.meta, path: "/o-nama" });
 
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "O nama", path: "/o-nama" }])} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/o-nama", name: about.meta.title, description: about.meta.description, type: "AboutPage", dateModified: lastUpdated("/o-nama") }),
+          breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "O nama", path: "/o-nama" }]),
+          faqJsonLd(about.faq.items, "/o-nama"),
+        ]}
+      />
       <PageHero label={about.label} title={about.title} lead={about.lead} />
 
       {/* Manifest */}
@@ -127,6 +135,19 @@ export default function AboutPage() {
       <section className="border-y border-line py-8">
         <p className="container-x text-label mb-4 text-paper-3">( {about.stack.label} ) {about.stack.title}</p>
         <Marquee items={about.stack.items} duration={50} className="font-display text-3xl font-bold uppercase tracking-tight text-paper-2 md:text-5xl" />
+      </section>
+
+      <Faq label={about.faq.label} title={about.faq.title} items={about.faq.items} num="06" />
+
+      <section className="container-x pb-[var(--section-y)]">
+        <Reveal>
+          <p className="text-lead max-w-2xl">
+            Trebaju Vam službeni podaci o firmi, gotov opis za tekst ili naš logo?{" "}
+            <TransitionLink href="/press" className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-paper">
+              Sve je na press stranici
+            </TransitionLink>.
+          </p>
+        </Reveal>
       </section>
 
       <BigCta title={[about.cta.title]} text={about.cta.text} button={about.cta.button} label={site.tagline} />

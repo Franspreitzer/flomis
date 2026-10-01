@@ -44,6 +44,13 @@ export function Footer() {
                     </TransitionLink>
                   </li>
                 ))}
+                {nav.footer.map((s) => (
+                  <li key={s.href}>
+                    <TransitionLink href={s.href} className="text-[0.95rem] text-paper-2 transition-colors hover:text-paper">
+                      {s.label}
+                    </TransitionLink>
+                  </li>
+                ))}
                 {nav.legal.map((s) => (
                   <li key={s.href}>
                     <TransitionLink href={s.href} className="text-[0.95rem] text-paper-2 transition-colors hover:text-paper">

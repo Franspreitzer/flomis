@@ -59,7 +59,18 @@ export const metadata: Metadata = {
     description: home.meta.description,
   },
   twitter: { card: "summary_large_image", title: home.meta.title, description: home.meta.description },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      // Bez limita na duljinu snippeta — Google i AI Overviews smiju citirati cijeli odgovor.
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: { canonical: site.url, languages: { "hr-HR": site.url }, types: { "application/rss+xml": `${site.url}/feed.xml` } },
   icons: { icon: "/icon", apple: "/apple-icon" },
 };

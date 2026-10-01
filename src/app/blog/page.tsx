@@ -4,9 +4,9 @@ import { PageHero } from "@/components/sections/PageHero";
 import { PostCard } from "@/components/sections/PostCard";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
-import { blogUi, site } from "@/content";
+import { blogUi, lastUpdated, site } from "@/content";
 import { getPosts } from "@/lib/blog";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ ...blogUi.meta, path: "/blog" });
 
@@ -16,6 +16,7 @@ export default function BlogPage() {
     <>
       <JsonLd
         data={[
+          webPageJsonLd({ path: "/blog", name: blogUi.meta.title, description: blogUi.meta.description, type: "CollectionPage", dateModified: lastUpdated("/blog") }),
           breadcrumbJsonLd([{ name: blogUi.crumbs.home, path: "" }, { name: blogUi.crumbs.blog, path: "/blog" }]),
           {
             "@context": "https://schema.org",

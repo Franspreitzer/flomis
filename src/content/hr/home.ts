@@ -1,6 +1,6 @@
 export const home = {
   meta: {
-    title: "Flomis | Izrada web stranica Osijek — web shopovi i AI asistenti",
+    title: "Digitalna agencija Osijek — web stranice, web shopovi i AI asistenti | Flomis",
     description:
       "Flomis je digitalna agencija iz Osijeka. Izrada web stranica od 500 €, web shopova od 1.000 € i AI asistenata od 200 € za firme iz Osijeka, Osječko-baranjske županije i cijele Slavonije. Ponuda u 24 h.",
   },

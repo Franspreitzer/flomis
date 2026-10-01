@@ -6,8 +6,8 @@ import { Accordion } from "@/components/ui/Accordion";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { contact, site } from "@/content";
-import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
+import { contact, lastUpdated, site } from "@/content";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ ...contact.meta, path: "/kontakt" });
 
@@ -17,7 +17,13 @@ export default function ContactPage() {
 
   return (
     <>
-      <JsonLd data={[breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Kontakt", path: "/kontakt" }]), faqJsonLd(contact.faq)]} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/kontakt", name: contact.meta.title, description: contact.meta.description, type: "ContactPage", dateModified: lastUpdated("/kontakt") }),
+          breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Kontakt", path: "/kontakt" }]),
+          faqJsonLd(contact.faq, "/kontakt"),
+        ]}
+      />
       <PageHero label={contact.label} title={contact.title} lead={contact.lead} size="xl" />
 
       <section className="container-x grid gap-14 pb-[var(--section-y)] lg:grid-cols-12">

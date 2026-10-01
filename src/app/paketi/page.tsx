@@ -8,8 +8,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { pricing } from "@/content";
-import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
+import { TransitionLink } from "@/components/ui/TransitionLink";
+import { lastUpdated, pricing } from "@/content";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({ ...pricing.meta, path: "/paketi" });
@@ -17,7 +18,13 @@ export const metadata: Metadata = buildMetadata({ ...pricing.meta, path: "/paket
 export default function PricingPage() {
   return (
     <>
-      <JsonLd data={[breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Paketi", path: "/paketi" }]), faqJsonLd(pricing.faq)]} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/paketi", name: pricing.meta.title, description: pricing.meta.description, type: "CollectionPage", dateModified: lastUpdated("/paketi") }),
+          breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Paketi", path: "/paketi" }]),
+          faqJsonLd(pricing.faq, "/paketi"),
+        ]}
+      />
       <PageHero
         label={pricing.label}
         title={pricing.title}
@@ -107,6 +114,21 @@ export default function PricingPage() {
           </Reveal>
         </div>
         <p className="container-x text-label mt-10 text-paper-3">{pricing.note}</p>
+      </section>
+
+      <section className="container-x pb-[var(--section-y)]">
+        <Reveal>
+          <p className="text-lead max-w-2xl">
+            Niste sigurni koji paket odgovara Vašoj situaciji? U blogu uspoređujemo{" "}
+            <TransitionLink href="/blog/sablona-po-mjeri-ili-agencija" className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-paper">
+              šablonu, izradu po mjeri i rad s agencijom
+            </TransitionLink>{" "}
+            te objašnjavamo{" "}
+            <TransitionLink href="/blog/koliko-kosta-izrada-web-stranice-osijek" className="text-accent underline decoration-line-strong underline-offset-4 transition-colors hover:text-paper">
+              od čega se cijena izrade web stranice sastoji
+            </TransitionLink>.
+          </p>
+        </Reveal>
       </section>
 
       <Faq label={pricing.faqLabel} title={pricing.faqTitle} items={pricing.faq} num="05" />

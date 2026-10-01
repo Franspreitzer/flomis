@@ -67,7 +67,7 @@ export default async function PostPage({ params }: Params) {
     <>
       <JsonLd
         data={[
-          blogPostingJsonLd({ slug: p.slug, title: p.title, description: p.description, date: p.date, updated: p.updated, keywords: p.keywords, wordCount: p.wordCount }),
+          blogPostingJsonLd({ slug: p.slug, title: p.title, description: p.description, date: p.date, updated: p.updated, keywords: p.keywords, wordCount: p.wordCount, category: p.category, readingMinutes: p.readingMinutes }),
           breadcrumbJsonLd([
             { name: blogUi.crumbs.home, path: "" },
             { name: blogUi.crumbs.blog, path: "/blog" },

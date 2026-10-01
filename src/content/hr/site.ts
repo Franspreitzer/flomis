@@ -45,6 +45,11 @@ export const site = {
     hours: "Pon – Pet, 9:00 – 17:00",
     responseTime: "Odgovaramo u roku 24 sata",
   },
+  /**
+   * Google recenzije. `count: 0` = schema.org aggregateRating se NE ispisuje.
+   * Povećaj tek kad su recenzije stvarne i vidljive na stranici (Googleove smjernice).
+   */
+  reviews: { count: 0, average: 0 },
   geo: { lat: 45.5511, lng: 18.6939 },
   /** Lokalni SEO: područje rada (koristi se u tekstu, footeru i schema.org areaServed). */
   region: "Osječko-baranjska županija",
@@ -83,6 +88,8 @@ export const nav = {
     { label: "Hosting i domene", href: "/usluge/hosting-i-domene" },
     { label: "Održavanje", href: "/usluge/odrzavanje" },
   ],
+  /** Linkovi samo u footeru — ne idu u glavnu navigaciju. */
+  footer: [{ label: "Press kit", href: "/press" }],
   legal: [
     { label: "Politika privatnosti", href: "/politika-privatnosti" },
     { label: "Politika kolačića", href: "/politika-kolacica" },

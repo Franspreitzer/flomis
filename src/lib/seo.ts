@@ -41,6 +41,7 @@ export function buildMetadata({ title, description, path, image, type = "website
 
 const ORG_ID = `${site.url}/#organization`;
 const SITE_ID = `${site.url}/#website`;
+const BLOG_ID = `${site.url}/blog#blog`;
 
 const areaServed = () => [
   ...site.serviceArea.map((name) => ({ "@type": "City", name })),
@@ -58,13 +59,23 @@ export function localBusinessJsonLd() {
     alternateName: ["Flomis Osijek", "FLOMIS", "flomis.hr", "www.flomis.hr"],
     legalName: site.legalName,
     url: site.url,
-    logo: { "@type": "ImageObject", url: `${site.url}/logo/logo-dark.svg` },
+    logo: { "@type": "ImageObject", url: `${site.url}/logo/logo-dark.svg`, width: 512, height: 512 },
     image: `${site.url}/opengraph-image`,
     description: site.description,
     slogan: "Web koji radi za tvoju firmu.",
     email: site.contact.email,
     telephone: site.contact.phoneHref.replace("tel:", ""),
     foundingDate: site.founded,
+    foundingLocation: {
+      "@type": "Place",
+      name: site.contact.address.city,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.contact.address.city,
+        addressRegion: site.region,
+        addressCountry: site.contact.address.countryCode,
+      },
+    },
     vatID: `HR${site.oib}`,
     taxID: site.oib,
     address: {
@@ -100,7 +111,34 @@ export function localBusinessJsonLd() {
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Bankovni prijenos, kartica",
-    knowsAbout: ["Izrada web stranica", "Web shop", "AI chatbot", "SEO", "Hosting", "Održavanje web stranica", "Next.js", "Shopify", "WordPress"],
+    knowsAbout: [
+      "Izrada web stranica",
+      "Izrada web shopa",
+      "Web shop",
+      "AI chatbot za firme",
+      "AI asistent",
+      "SEO",
+      "Lokalni SEO",
+      "Google Business Profil",
+      "Core Web Vitals",
+      "Hosting",
+      "Održavanje web stranica",
+      "Next.js",
+      "Shopify Hrvatska",
+      "WordPress",
+    ],
+    // Rating se ispisuje tek kad recenzije postoje i vidljive su na stranici.
+    ...(site.reviews.count > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: site.reviews.average,
+            reviewCount: site.reviews.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Usluge",
@@ -130,8 +168,40 @@ export function webSiteJsonLd() {
     url: site.url,
     name: site.name,
     alternateName: ["FLOMIS", "Flomis Osijek", "www.flomis.hr"],
+    description: site.description,
     inLanguage: "hr",
     publisher: { "@id": ORG_ID },
+    about: { "@id": ORG_ID },
+    copyrightHolder: { "@id": ORG_ID },
+  };
+}
+
+type PageType = "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage";
+
+/**
+ * WebPage čvor koji stranicu veže uz WebSite i uz firmu.
+ * Zahvaljujući njemu AI asistenti znaju da svi ti URL-ovi opisuju istu firmu.
+ */
+export function webPageJsonLd(input: {
+  path: string;
+  name: string;
+  description: string;
+  type?: PageType;
+  dateModified?: string;
+}) {
+  const url = `${site.url}${input.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": input.type ?? "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: input.name,
+    description: input.description,
+    inLanguage: "hr",
+    isPartOf: { "@id": SITE_ID },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
   };
 }
 
@@ -178,10 +248,14 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function faqJsonLd(items: readonly { q: string; a: string }[]) {
+/** `path` je opcionalan: kad ga zadaš, FAQ se veže uz WebPage čvor te stranice. */
+export function faqJsonLd(items: readonly { q: string; a: string }[], path?: string) {
+  const url = path ? `${site.url}${path}` : undefined;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(url ? { "@id": `${url}#faq`, url, isPartOf: { "@id": `${url}#webpage` } } : {}),
+    inLanguage: "hr",
     mainEntity: items.map((it) => ({
       "@type": "Question",
       name: it.q,
@@ -199,6 +273,7 @@ export function caseStudyJsonLd(p: {
   image: string;
   services: readonly string[];
   clientUrl?: string;
+  modified?: string;
 }) {
   const url = `${site.url}/radovi/${p.slug}`;
   return {
@@ -212,6 +287,7 @@ export function caseStudyJsonLd(p: {
     image: `${site.url}${p.image}`,
     inLanguage: "hr",
     dateCreated: p.year,
+    dateModified: p.modified ?? p.year,
     genre: "Web design",
     keywords: p.services.join(", "),
     creator: { "@id": ORG_ID },
@@ -229,6 +305,8 @@ export function blogPostingJsonLd(p: {
   image?: string;
   keywords?: string[];
   wordCount?: number;
+  category?: string;
+  readingMinutes?: number;
 }) {
   const url = `${site.url}/blog/${p.slug}`;
   return {
@@ -245,6 +323,9 @@ export function blogPostingJsonLd(p: {
     image: p.image ?? `${site.url}/blog/${p.slug}/opengraph-image`,
     author: { "@type": "Organization", name: site.name, url: site.url, "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
+    isPartOf: { "@type": "Blog", "@id": BLOG_ID },
+    ...(p.category ? { articleSection: p.category } : {}),
+    ...(p.readingMinutes ? { timeRequired: `PT${p.readingMinutes}M` } : {}),
     ...(p.keywords ? { keywords: p.keywords.join(", ") } : {}),
     ...(p.wordCount ? { wordCount: p.wordCount } : {}),
   };

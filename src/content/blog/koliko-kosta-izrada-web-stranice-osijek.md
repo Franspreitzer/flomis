@@ -2,6 +2,7 @@
 title: "Koliko košta izrada web stranice u Osijeku (cjenik 2026)"
 description: "Realne cijene izrade web stranica u Osijeku i Slavoniji: od 500 € za prezentacijsku stranicu do web shopova od 1.000 €. Što utječe na cijenu i kako ne preplatiti."
 date: 2026-09-18
+updated: 2026-10-01
 category: "Cijene"
 keywords: ["izrada web stranica osijek", "cijena web stranice", "koliko košta web stranica", "web stranica osijek cijena", "izrada web stranica slavonija"]
 ---
@@ -61,5 +62,7 @@ Da, ako donosi upite. Jedna kuhinja po mjeri, jedna renovacija kupaonice, jedan 
 3. **Dizajn koji odobravate** prije nego napišemo i jedan redak koda.
 4. **Razvoj, testiranje, lansiranje** — domena, hosting, SSL, Google Business, sve postavljamo mi.
 5. **Održavanje** — ako želite, brinemo se o stranici svaki mjesec.
+
+Još niste sigurni koji Vam je način izrade uopće potreban? U zasebnom tekstu uspoređujemo [šablonu, izradu po mjeri i rad s agencijom](/blog/sablona-po-mjeri-ili-agencija) — s tablicom troškova kroz tri godine. A prije nego odaberete izvođača, prođite kroz [devet pitanja koja treba postaviti svakoj web agenciji](/blog/kako-odabrati-web-agenciju-osijek).
 
 Želite konkretnu ponudu za svoju firmu? [Pošaljite nam par rečenica](/kontakt) o tome čime se bavite — vraćamo se s idejom i cijenom u roku 24 sata.

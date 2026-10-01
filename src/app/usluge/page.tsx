@@ -5,15 +5,20 @@ import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
 import { TransitionLink } from "@/components/ui/TransitionLink";
-import { services, servicesIntro, ui } from "@/content";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { lastUpdated, services, servicesIntro, ui } from "@/content";
+import { breadcrumbJsonLd, buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ ...servicesIntro.meta, path: "/usluge" });
 
 export default function ServicesPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Usluge", path: "/usluge" }])} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/usluge", name: servicesIntro.meta.title, description: servicesIntro.meta.description, type: "CollectionPage", dateModified: lastUpdated("/usluge") }),
+          breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Usluge", path: "/usluge" }]),
+        ]}
+      />
       <PageHero
         label={servicesIntro.label}
         title={servicesIntro.title}

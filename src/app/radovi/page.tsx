@@ -5,8 +5,8 @@ import { WorkGrid } from "@/components/sections/WorkGrid";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
-import { projects, workComingSoon, workIntro } from "@/content";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { lastUpdated, projects, workComingSoon, workIntro } from "@/content";
+import { breadcrumbJsonLd, buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({ ...workIntro.meta, path: "/radovi" });
 
@@ -14,7 +14,12 @@ export default function WorkPage() {
   const soon = workIntro.soon;
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Radovi", path: "/radovi" }])} />
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: "/radovi", name: workIntro.meta.title, description: workIntro.meta.description, type: "CollectionPage", dateModified: lastUpdated("/radovi") }),
+          breadcrumbJsonLd([{ name: "Početna", path: "" }, { name: "Radovi", path: "/radovi" }]),
+        ]}
+      />
       {workComingSoon ? (
         <>
           <PageHero

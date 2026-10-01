@@ -203,6 +203,15 @@
   mix-blend-mode: overlay;
 }
 
+/* FAQ harmonika — nativni <details>, animacija samo na otvaranju */
+@keyframes accordion-in {
+  from { opacity: 0; transform: translate3d(0, -0.5rem, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+details[open] > .accordion-panel {
+  animation: accordion-in 0.45s var(--ease-out-expo) both;
+}
+
 /* Prijelazi helper */
 .mask-reveal {
   clip-path: inset(0 0 100% 0);
