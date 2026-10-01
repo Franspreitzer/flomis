@@ -10,14 +10,16 @@ type Props = { projects: Project[]; filters: readonly string[] };
 
 /** Grid projekata s filtrom po kategoriji (animirani layout). */
 export function WorkGrid({ projects, filters }: Props) {
-  const [active, setActive] = useState(filters[0]);
+  // Prikaži samo kategorije koje stvarno postoje među projektima.
+  const used = filters.filter((f, i) => i === 0 || projects.some((p) => p.category === f));
+  const [active, setActive] = useState(used[0]);
   const reduced = useReducedMotion();
-  const list = active === filters[0] ? projects : projects.filter((p) => p.category === active);
+  const list = active === used[0] ? projects : projects.filter((p) => p.category === active);
 
   return (
     <div>
-      <div role="tablist" aria-label="Filtriraj radove" className="mb-10 flex flex-wrap gap-2 md:mb-14">
-        {filters.map((f) => {
+      <div role="tablist" aria-label="Filtriraj radove" className={cn("mb-10 flex-wrap gap-2 md:mb-14", used.length > 2 ? "flex" : "hidden")}>
+        {used.map((f) => {
           const on = f === active;
           return (
             <button
@@ -33,14 +35,14 @@ export function WorkGrid({ projects, filters }: Props) {
             >
               {f}
               <span className="ml-2 font-mono text-[0.65rem] opacity-70">
-                {f === filters[0] ? projects.length : projects.filter((p) => p.category === f).length}
+                {f === used[0] ? projects.length : projects.filter((p) => p.category === f).length}
               </span>
             </button>
           );
         })}
       </div>
 
-      <m.ul layout className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      <m.ul layout className={cn("grid gap-x-6 gap-y-12 md:grid-cols-2", list.length > 2 && "lg:grid-cols-3")}>
         <AnimatePresence mode="popLayout" initial={false}>
           {list.map((p, i) => (
             <m.li

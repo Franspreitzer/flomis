@@ -83,6 +83,9 @@ export const home = {
     title: "Prvi projekti su u izradi.",
     lead: "Flomis je osnovan u rujnu 2026. Prve stranice i AI asistenti trenutno se rade — čim budu online, bit će ovdje sa stvarnim brojkama, ne obećanjima.",
     cta: "Budi među prvima",
+    featuredTitle: "Nedavni radovi.",
+    featuredLead: "Stranice koje rade svoj posao — otvorite ih i probajte.",
+    featuredCta: "Svi radovi",
     ctaHref: "/kontakt",
     perks: [
       { title: "Cijena pokretanja", text: "Prvih deset klijenata dobiva fiksnu cijenu koja se kasnije neće ponoviti." },

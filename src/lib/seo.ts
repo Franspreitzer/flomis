@@ -190,6 +190,36 @@ export function faqJsonLd(items: readonly { q: string; a: string }[]) {
   };
 }
 
+/** Studija slučaja / projekt — CreativeWork s poveznicom na izrađenu stranicu. */
+export function caseStudyJsonLd(p: {
+  slug: string;
+  title: string;
+  description: string;
+  year: string;
+  image: string;
+  services: readonly string[];
+  clientUrl?: string;
+}) {
+  const url = `${site.url}/radovi/${p.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${url}#project`,
+    name: p.title,
+    headline: p.title,
+    description: p.description,
+    url,
+    image: `${site.url}${p.image}`,
+    inLanguage: "hr",
+    dateCreated: p.year,
+    genre: "Web design",
+    keywords: p.services.join(", "),
+    creator: { "@id": ORG_ID },
+    provider: { "@id": ORG_ID },
+    ...(p.clientUrl ? { sameAs: [p.clientUrl], mainEntityOfPage: url } : {}),
+  };
+}
+
 export function blogPostingJsonLd(p: {
   slug: string;
   title: string;

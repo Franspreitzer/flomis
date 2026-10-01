@@ -10,7 +10,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SplitText } from "@/components/ui/SplitText";
 import { TransitionLink } from "@/components/ui/TransitionLink";
 import { getProject, projects, ui, workComingSoon, workIntro } from "@/content";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, buildMetadata, caseStudyJsonLd } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -38,11 +38,22 @@ export default async function ProjectPage({ params }: Params) {
   return (
     <>
       <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Početna", path: "" },
-          { name: "Radovi", path: "/radovi" },
-          { name: p.title, path: `/radovi/${p.slug}` },
-        ])}
+        data={[
+          caseStudyJsonLd({
+            slug: p.slug,
+            title: p.title,
+            description: p.short,
+            year: p.year,
+            image: p.cover,
+            services: p.services,
+            clientUrl: p.url && p.url !== "#" ? p.url : undefined,
+          }),
+          breadcrumbJsonLd([
+            { name: "Početna", path: "" },
+            { name: "Radovi", path: "/radovi" },
+            { name: p.title, path: `/radovi/${p.slug}` },
+          ]),
+        ]}
       />
       <PageHero
         label={`${p.category} · ${p.year}`}
