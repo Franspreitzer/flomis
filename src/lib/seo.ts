@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { services, site } from "@/content";
+import { site } from "@/content";
 
 type MetaInput = {
   title: string;
@@ -49,114 +49,36 @@ const areaServed = () => [
   { "@type": "Country", name: "Hrvatska" },
 ];
 
-/** Glavna schema: LocalBusiness + ProfessionalService s katalogom usluga i cijenama. */
+/** Glavna schema firme. Ispisuje se na svim stranicama iz root layouta. */
 export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
-    "@id": ORG_ID,
-    name: site.name,
-    alternateName: ["Flomis Osijek", "FLOMIS", "flomis.hr", "www.flomis.hr"],
-    legalName: site.legalName,
-    url: site.url,
-    logo: { "@type": "ImageObject", url: `${site.url}/logo/logo-dark.svg`, width: 512, height: 512 },
-    image: `${site.url}/opengraph-image`,
-    description: site.description,
-    slogan: "Web koji radi za tvoju firmu.",
-    email: site.contact.email,
-    telephone: site.contact.phoneHref.replace("tel:", ""),
-    foundingDate: site.founded,
-    foundingLocation: {
-      "@type": "Place",
-      name: site.contact.address.city,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: site.contact.address.city,
-        addressRegion: site.region,
-        addressCountry: site.contact.address.countryCode,
-      },
-    },
-    vatID: `HR${site.oib}`,
-    taxID: site.oib,
+    "@type": "ProfessionalService",
+    "@id": "https://www.flomis.hr/#organization",
+    name: "Flomis",
+    legalName: "FLOMIS j.d.o.o. za informatičke usluge",
+    url: "https://www.flomis.hr",
+    taxID: "39781208205",
+    vatID: "HR39781208205",
+    description:
+      "Flomis je digitalna agencija iz Osijeka: izrada web stranica, web shopova i AI asistenata za firme iz Osijeka, Slavonije i cijele Hrvatske.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.contact.address.street,
-      postalCode: site.contact.address.zip,
-      addressLocality: site.contact.address.city,
-      addressRegion: site.region,
-      addressCountry: site.contact.address.countryCode,
+      streetAddress: "Dunavska 36",
+      postalCode: "31000",
+      addressLocality: "Osijek",
+      addressRegion: "Osječko-baranjska županija",
+      addressCountry: "HR",
     },
-    geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.contact.address.street}, ${site.contact.address.zip} ${site.contact.address.city}`)}`,
-    areaServed: areaServed(),
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "17:00",
-      },
+    telephone: "+385976425423",
+    email: "info@flomis.hr",
+    areaServed: [
+      { "@type": "City", name: "Osijek" },
+      { "@type": "AdministrativeArea", name: "Osječko-baranjska županija" },
+      { "@type": "Country", name: "Hrvatska" },
     ],
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: site.contact.phoneHref.replace("tel:", ""),
-        email: site.contact.email,
-        contactType: "sales",
-        availableLanguage: ["hr", "en"],
-        areaServed: "HR",
-      },
-    ],
-    sameAs: site.social.map((s) => s.href).filter((h) => !h.includes("[")),
-    priceRange: "€€",
-    currenciesAccepted: "EUR",
-    paymentAccepted: "Bankovni prijenos, kartica",
-    knowsAbout: [
-      "Izrada web stranica",
-      "Izrada web shopa",
-      "Web shop",
-      "AI chatbot za firme",
-      "AI asistent",
-      "SEO",
-      "Lokalni SEO",
-      "Google Business Profil",
-      "Core Web Vitals",
-      "Hosting",
-      "Održavanje web stranica",
-      "Next.js",
-      "Shopify Hrvatska",
-      "WordPress",
-    ],
-    // Rating se ispisuje tek kad recenzije postoje i vidljive su na stranici.
-    ...(site.reviews.count > 0
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: site.reviews.average,
-            reviewCount: site.reviews.count,
-            bestRating: 5,
-            worstRating: 1,
-          },
-        }
-      : {}),
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Usluge",
-      itemListElement: services.map((s) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.title, url: `${site.url}/usluge/${s.slug}`, description: s.short },
-        ...(/^\d/.test(s.priceFrom)
-          ? {
-              priceSpecification: {
-                "@type": "PriceSpecification",
-                price: s.priceFrom.replace(/[^\d.,]/g, "").replace(".", "").replace(",", "."),
-                priceCurrency: "EUR",
-                valueAddedTaxIncluded: false,
-              },
-            }
-          : {}),
-      })),
-    },
+    knowsAbout: ["Izrada web stranica", "Izrada web shopova", "AI asistenti", "Hosting", "Registracija domena", "SEO"],
+    sameAs: ["https://www.instagram.com/flomis.digital/"],
   };
 }
 
